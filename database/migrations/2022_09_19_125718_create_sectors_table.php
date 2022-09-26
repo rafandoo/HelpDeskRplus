@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('sectors', function (Blueprint $table) {
             $table->id();
             $table->string('description', 30);
-            $table->tinyInteger('active')->default(1);
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('priorities', function (Blueprint $table) {
             $table->id();
             $table->string('description', 15);
-            $table->tinyInteger('active')->default(1);
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

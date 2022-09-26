@@ -13,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('statuses', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->string('description', 15);
+            $table->string('name', 255);
+            $table->string('fantasy_name', 255)->nullable();
+            $table->string('cpf_cnpj', 14)->unique();
+            $table->string('email', 255)->unique();
+            $table->string('phone', 11)->nullable();
+            $table->longText('notes')->nullable();
             $table->boolean('active')->default(1);
             $table->timestamps();
         });
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statuses');
+        Schema::dropIfExists('clients');
     }
 };

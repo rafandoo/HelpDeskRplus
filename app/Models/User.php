@@ -19,8 +19,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'last_name',
         'email',
+        'login',
         'password',
+        'access_level',
+        'status'
     ];
 
     /**
@@ -41,4 +45,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function accessLevel()
+    {
+        return $this->belongsTo('App\Models\AccessLevel');
+    }
+
+    public function client()
+    {
+        return $this->hasOne('App\Models\Client');
+    }
 }
