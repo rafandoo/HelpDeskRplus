@@ -9,6 +9,17 @@ class Client extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'fantasy_name',
+        'cpf_cnpj',
+        'email',
+        'phone',
+        'notes',
+        'active',
+        'user_id'
+    ];
+
     public function address()
     {
         return $this->hasOne('App\Models\Address');
