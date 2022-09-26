@@ -29,4 +29,9 @@ class Client extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function tickets()
+    {
+        return $this->hasMany('App\Models\Ticket');
+    }
 }

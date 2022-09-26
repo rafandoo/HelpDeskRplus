@@ -13,4 +13,9 @@ class Category extends Model
         'description',
         'active'
     ];
+
+    public function tickets()
+    {
+        return $this->hasMany('App\Models\Ticket');
+    }
 }

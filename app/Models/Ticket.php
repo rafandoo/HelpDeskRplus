@@ -20,6 +20,7 @@ class Ticket extends Model
         'status_id',
         'sector_id',
         'client_id',
+        'user_id',
         'contact'
     ];
 
@@ -47,4 +48,9 @@ class Ticket extends Model
     {
         return $this->belongsTo('App\Models\Client');
     }   
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

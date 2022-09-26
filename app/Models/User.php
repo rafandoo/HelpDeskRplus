@@ -55,4 +55,14 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Client');
     }
+
+    public function tickets()
+    {
+        return $this->hasMany('App\Models\Ticket');
+    }
+
+    public function occurrences()
+    {
+        return $this->hasMany('App\Models\Occurrence');
+    }
 }
