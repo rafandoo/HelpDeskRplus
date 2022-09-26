@@ -7,6 +7,10 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\AccessLevelController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\OccurrenceController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClientController;
 
 
 /*

@@ -53,4 +53,14 @@ class Ticket extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function occurrences()
+    {
+        return $this->hasMany('App\Models\Occurrences');
+    }
+
+    public function serviceOrder()
+    {
+        return $this->hasOne('App\Models\serviceOrder');
+    }
 }
