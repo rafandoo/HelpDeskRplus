@@ -9,7 +9,7 @@
 The present Help Desk system project was developed for the WEB II Development course of Bachelor of Computer Science at Instituto Federal Catarinense - IFC, aims to provide a support tool, acting in the opening and registration of tickets (called) and their management.
 </p>
 
-## Technologies :man_technologist:
+## Technologies 👨‍💻
 
 <p align="center">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
