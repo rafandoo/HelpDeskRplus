@@ -1,6 +1,6 @@
 <h1 align="center">Help Desk 🆘</h1>
 
-> Project Status: :hourglass_flowing_sand: In progress
+> Project Status: ⏳ In progress
 
 
 ## Project description 📝
