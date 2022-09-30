@@ -5,7 +5,7 @@
         </a>
         <hr class="sidebar-divider my-0">
         <ul class="navbar-nav text-light" id="accordionSidebar">
-            <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="home"><i class="fas fa-home"></i><span>Home</span></a></li>
             <li class="nav-item">
                 <div><a data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapse-3" href="#collapse-3" role="button" class="nav-link"><i class="fas fa-tasks"></i>&nbsp;<span>Atendimentos</span></a>
                     <div class="collapse" id="collapse-3">
