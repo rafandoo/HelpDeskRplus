@@ -5,7 +5,8 @@
         </a>
         <hr class="sidebar-divider my-0">
         <ul class="navbar-nav text-light" id="accordionSidebar">
-            <li class="nav-item"><a class="nav-link" href="home"><i class="fas fa-home"></i><span>Home</span></a></li>
+
+            <li class="nav-item"><a class="nav-link" href="{{ route('home')}}"><i class="fas fa-home"></i><span>Home</span></a></li>
             <li class="nav-item">
                 <div><a data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapse-3" href="#collapse-3" role="button" class="nav-link"><i class="fas fa-tasks"></i>&nbsp;<span>Atendimentos</span></a>
                     <div class="collapse" id="collapse-3">
@@ -16,7 +17,7 @@
             <li class="nav-item">
                 <div><a data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" href="#collapse-1" role="button" class="nav-link"><i class="fas fa-user"></i>&nbsp;<span>Cadastros</span></a>
                     <div class="collapse" id="collapse-1">
-                        <div class="bg-white border rounded collapse-inner"><a class="collapse-item" href="clientes.php">Clientes</a><a class="collapse-item" href="usuarios.php">Usuários</a><a class="collapse-item" href="categorias.php">Categorias</a><a class="collapse-item" href="setores.php">Setores</a></div>
+                        <div class="bg-white border rounded collapse-inner"><a class="collapse-item" href="clientes.php">Clientes</a><a class="collapse-item" href="usuarios.php">Usuários</a><a class="collapse-item" href="categorias.php">Categorias</a><a class="collapse-item" href="sector">Setores</a></div>
                     </div>
                 </div>
             </li>
