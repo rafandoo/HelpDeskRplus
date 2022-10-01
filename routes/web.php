@@ -11,6 +11,8 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\OccurrenceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ServiceOrderController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -25,8 +27,10 @@ use App\Http\Controllers\ClientController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::resource('category', CategoryController::class);
 Route::resource('sector', SectorController::class);
