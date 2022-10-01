@@ -14,7 +14,8 @@ class SectorController extends Controller
      */
     public function index()
     {
-        //
+        $sectors = Sector::all();
+        return view('sector.index', compact('sectors'));
     }
 
     /**
