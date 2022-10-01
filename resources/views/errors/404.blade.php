@@ -18,7 +18,7 @@
                     </div>
                         <p class="text-dark mb-5 lead">Page Not Found</p>
                         <p class="text-black-50 mb-0">Parece que você encontrou uma falha na matrix...</p>
-                        <a href="home">← Voltar ao início</a>
+                        <a href="{{ route('home')}}">&larr; Voltar para o início</a>
                     </div>
                 </div>
             </div>
