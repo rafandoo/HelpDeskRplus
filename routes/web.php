@@ -33,7 +33,9 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::resource('category', CategoryController::class);
-Route::resource('sector', SectorController::class);
+
+Route::resource('sector', SectorController::class, ['except' => ['show', 'destroy']]);
+Route::get('sector/{id}/active', [SectorController::class, 'active'])->name('sector.active');
 
 Route::get('/priority', [PriorityController::class, 'index']);
 Route::get('/priority/{id}', [PriorityController::class, 'show']);

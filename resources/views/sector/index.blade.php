@@ -58,7 +58,7 @@
                                     <a class="btn btn-outline-success border rounded-circle" role="button" style="border-radius: 30px;width: 40px;margin-right: 10px;" href="{{ route('sector.edit', $sector->id) }}">
                                         <i class="fas fa-pen" style="width: 14px;height: 16px;"></i>
                                     </a>
-                                    <a class="btn btn-outline-danger border rounded-circle" role="button" style="border-radius: 30px;border-width: 1px;margin-right: 10px;" href="">
+                                    <a class="btn btn-outline-danger border rounded-circle" role="button" style="border-radius: 30px;border-width: 1px;margin-right: 10px;" href="{{ route('sector.active', $sector->id) }}">
                                         <i class="fas fa-ban" style="width: 14px;height: 16px;"></i>
                                     </a>
                                 </td>

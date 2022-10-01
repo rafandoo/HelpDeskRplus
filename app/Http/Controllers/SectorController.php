@@ -78,13 +78,20 @@ class SectorController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Change the status of the specified resource from storage.
      *
      * @param  \App\Models\Sector  $sector
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sector $sector)
+    public function active($id)
     {
-        //
+        $sector = Sector::findOrFail($id);
+        if ($sector->active == 1) {
+            $sector->active = 0;
+        } else {
+            $sector->active = 1;
+        }
+        $sector->save();
+        return redirect()->route('sector.index');
     }
 }
