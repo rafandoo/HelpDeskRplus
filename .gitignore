@@ -50,3 +50,6 @@ Homestead.json
 
 # Ignore temp folders
 temp/
+
+# Ignore tmp files
+*.tmp
