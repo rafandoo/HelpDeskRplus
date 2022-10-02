@@ -5,7 +5,7 @@
             <label class="form-label" for="description">
                 <strong>Descrição</strong><br>
             </label>
-            <input class="form-control" type="text" id="description" name="description" value="{{ old('description') ?? $object->description }}">
+            <input class="form-control" type="text" id="description" name="description" value="{{ isset($object) ? $object->description : '' }}">
         </div>
     </div>
     <div class="col">
@@ -14,8 +14,8 @@
                 <strong>Situação</strong><br>
             </label>
             <select class="form-select" id="active" name="active">
-                <option value="1" {{ $object->active == 1 ? 'selected' : '' }}>Ativo</option>
-                <option value="0" {{ $object->active == 0 ? 'selected' : '' }}>Inativo</option>
+                <option value="1" {{ isset($object) && $object->active == 1 ? 'selected' : '' }}>Ativo</option>
+                <option value="0" {{ isset($object) && $object->active == 0 ? 'selected' : '' }}>Inativo</option>
             </select>
         </div>
     </div>
