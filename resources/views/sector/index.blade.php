@@ -49,11 +49,7 @@
                             <tr>
                                 <td>{{ $sector->id }}</td>
                                 <td>{{ $sector->description }}</td>
-                                @if($sector->active == 1)
-                                    <td>Ativo</td>
-                                @else
-                                    <td>Inativo</td>
-                                @endif
+                                <td>{{ $sector->active == 1 ? 'Ativo' : 'Inativo' }}</td>
                                 <td class="text-end align-middle">
                                     <a class="btn btn-outline-success border rounded-circle" role="button" style="border-radius: 30px;width: 40px;margin-right: 10px;" href="{{ route('sector.edit', $sector->id) }}">
                                         <i class="fas fa-pen" style="width: 14px;height: 16px;"></i>
