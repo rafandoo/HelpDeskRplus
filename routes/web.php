@@ -2,16 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PriorityController;
-use App\Http\Controllers\StatusController;
 use App\Http\Controllers\SectorController;
-use App\Http\Controllers\StateController;
-use App\Http\Controllers\AccessLevelController;
-use App\Http\Controllers\TicketController;
-use App\Http\Controllers\OccurrenceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\ServiceOrderController;
 use App\Http\Controllers\HomeController;
 
 
@@ -40,3 +33,6 @@ Route::get('sector/{id}/active', [SectorController::class, 'active'])->name('sec
 
 Route::resource('client', ClientController::class);
 Route::get('client/{id}/active', [ClientController::class, 'active'])->name('client.active');
+
+Route::resource('user', UserController::class);
+Route::get('user/{id}/active', [UserController::class, 'active'])->name('user.active');
