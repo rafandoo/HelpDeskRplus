@@ -57,7 +57,7 @@
                                 <td>{{ $client->cpfCnpj }}</td>
                                 <td>{{ $client->situacao }}</td>
                                 <td class="text-nowrap text-end align-middle">
-                                    <a class="btn btn-outline-danger border rounded-circle" role="button" style="border-radius: 30px;margin-right: 10px;" href="{{ route('client.active', $client->id) }}" onclick="return confirm('Deseja mesmo bloquear esse cadastro?');">
+                                    <a class="btn btn-outline-danger border rounded-circle" role="button" style="border-radius: 30px;margin-right: 10px;" href="{{ route('client.active', $client->id) }}" onclick="return confirm('Deseja mesmo mudar a situação desse cadastro?');">
                                         <i class="fas fa-lock"></i>
                                     </a>
                                     <a class="btn btn-outline-success border rounded-circle" role="button" style="border-radius: 30px;width: 40px;margin-right: 10px;" href="{{ route('client.edit', $client->id) }}">

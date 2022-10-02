@@ -92,10 +92,10 @@
 <hr>
 <div class="row">
     <div class="col">
-        <div class="mb-3"><label class="form-label" for="user"><strong>Usuário</strong></label>
+        <div class="mb-3"><label class="form-label" for="login"><strong>Usuário</strong></label>
             <div class="input-group"><span class="input-group-text">@</span>
                 <!--verificar valiadação de usuario-->
-                <input class="form-control" type="text" id="user" name="user" placeholder="user.name" required minlength="2" value="{{ isset($user) ? $user->name : '' }}">
+                <input class="form-control" type="text" id="login" name="login" placeholder="user.name" required minlength="2" value="{{ isset($user) ? $user->login : '' }}">
             </div>
         </div>
     </div>
