@@ -44,9 +44,10 @@ class AddressController extends Controller
      * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function show(Address $address)
+    public function show($id)
     {
-        //
+        $address = Address::find($id);
+        return $address;
     }
 
     /**

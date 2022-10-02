@@ -14,7 +14,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $clients = Client::all();
+        return view('client.index', compact('clients'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('client.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Client::create($request->all());
+        return redirect()->route('client.index');
     }
 
     /**
@@ -55,9 +57,10 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit($id)
     {
-        //
+        $client = Client::findOrFail($id);
+        return view('client.edit', ['client' => $client]);
     }
 
     /**
@@ -67,19 +70,28 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(Request $request, $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->update($request->all());
+        return redirect()->route('client.index');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Change the status of the specified resource from storage.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\Client  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function active($id)
     {
-        //
+        $client = Client::findOrFail($id);
+        if ($client->active == 1) {
+            $client->active = 0;
+        } else {
+            $client->active = 1;
+        }
+        $client->save();
+        return redirect()->route('client.index');
     }
 }
