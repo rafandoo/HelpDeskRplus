@@ -5,7 +5,7 @@
             <label class="form-label" for="description">
                 <strong>Descrição</strong><br>
             </label>
-            <input class="form-control" type="text" id="description" name="description" value="{{ isset($object) ? $object->description : '' }}">
+            <input class="form-control" type="text" id="description" name="description" required value="{{ isset($object) ? $object->description : '' }}">
         </div>
     </div>
     <div class="col">

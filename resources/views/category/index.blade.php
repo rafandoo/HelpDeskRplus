@@ -54,7 +54,7 @@
                                     <a class="btn btn-outline-success border rounded-circle" role="button" style="border-radius: 30px;width: 40px;margin-right: 10px;" href="{{ route('category.edit', $category->id) }}">
                                         <i class="fas fa-pen" style="width: 14px;height: 16px;"></i>
                                     </a>
-                                    <a class="btn btn-outline-danger border rounded-circle" role="button" style="border-radius: 30px;border-width: 1px;margin-right: 10px;" href="{{ route('category.active', $category->id) }}">
+                                    <a class="btn btn-outline-danger border rounded-circle" role="button" style="border-radius: 30px;border-width: 1px;margin-right: 10px;" href="{{ route('category.active', $category->id) }}" onclick="return confirm('Deseja mesmo bloquear esse cadastro?');">
                                         <i class="fas fa-ban" style="width: 14px;height: 16px;"></i>
                                     </a>
                                 </td>

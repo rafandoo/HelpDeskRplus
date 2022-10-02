@@ -42,5 +42,6 @@
     <script src="{{ asset('assets/js/summernote-bs5.min.js') }}"></script>
     <script src="{{ asset('assets/js/summernote.js') }}"></script>
     <script src="{{ asset('assets/js/theme.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>
