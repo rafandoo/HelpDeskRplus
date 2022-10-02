@@ -32,19 +32,11 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::resource('category', CategoryController::class);
+Route::resource('category', CategoryController::class, ['except' => ['show', 'destroy']]);
+Route::get('category/{id}/active', [CategoryController::class, 'active'])->name('category.active');
 
 Route::resource('sector', SectorController::class, ['except' => ['show', 'destroy']]);
 Route::get('sector/{id}/active', [SectorController::class, 'active'])->name('sector.active');
 
-Route::get('/priority', [PriorityController::class, 'index']);
-Route::get('/priority/{id}', [PriorityController::class, 'show']);
-
-Route::get('/status', [StatusController::class, 'index']);
-Route::get('/status/{id}', [StatusController::class, 'show']);
-
-Route::get('/state', [StateController::class, 'index']);
-Route::get('/state/{id}', [StateController::class, 'show']);
-
-Route::get('/accesslevel', [AccessLevelController::class, 'index']);
-Route::get('/accesslevel/{id}', [AccessLevelController::class, 'show']);
+Route::resource('client', ClientController::class);
+Route::get('client/{id}/active', [ClientController::class, 'active'])->name('client.active');
