@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -76,14 +77,22 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
     }
 
+
     /**
-     * Remove the specified resource from storage.
+     * Change the status of the specified resource from storage.
      *
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function active($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        if ($category->active == 1) {
+            $category->active = 0;
+        } else {
+            $category->active = 1;
+        }
+        $category->save();
+        return redirect()->route('category.index');
     }
 }
