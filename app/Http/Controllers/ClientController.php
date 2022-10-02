@@ -37,7 +37,7 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         Client::create($request->all());
-        return redirect()->route('client.index');
+        return redirect()->route('client.index')->with('success', 'Cliente cadastrado com sucesso!');
     }
 
     /**
@@ -74,13 +74,13 @@ class ClientController extends Controller
     {
         $client = Client::findOrFail($id);
         $client->update($request->all());
-        return redirect()->route('client.index');
+        return redirect()->route('client.index')->with('success', 'Cliente atualizado com sucesso!');
     }
 
     /**
      * Change the status of the specified resource from storage.
      *
-     * @param  \App\Models\Client  $category
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
     public function active($id)
@@ -92,6 +92,6 @@ class ClientController extends Controller
             $client->active = 1;
         }
         $client->save();
-        return redirect()->route('client.index');
+        return redirect()->route('client.index')->with('success', 'Situação atualizado com sucesso!');
     }
 }

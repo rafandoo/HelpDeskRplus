@@ -37,7 +37,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         Category::create($request->all());
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('success', 'Categoria cadastrada com sucesso!');
     }
 
     /**
@@ -74,7 +74,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         Category::findOrFail($id)->update($request->all());
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('success', 'Categoria atualizada com sucesso!');
     }
 
 
@@ -93,6 +93,6 @@ class CategoryController extends Controller
             $category->active = 1;
         }
         $category->save();
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('success', 'Situação alterada com sucesso!');
     }
 }

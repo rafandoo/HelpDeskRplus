@@ -37,7 +37,7 @@ class SectorController extends Controller
     public function store(Request $request)
     {
         Sector::create($request->all());
-        return redirect()->route('sector.index');
+        return redirect()->route('sector.index')->with('success', 'Setor cadastrado com sucesso!');
     }
 
     /**
@@ -74,7 +74,7 @@ class SectorController extends Controller
     public function update(Request $request, $id)
     {
         Sector::findOrFail($id)->update($request->all());
-        return redirect()->route('sector.index');
+        return redirect()->route('sector.index')->with('success', 'Setor atualizado com sucesso!');
     }
 
     /**
@@ -92,6 +92,6 @@ class SectorController extends Controller
             $sector->active = 1;
         }
         $sector->save();
-        return redirect()->route('sector.index');
+        return redirect()->route('sector.index')->with('success', 'Situação alterado com sucesso!');
     }
 }
