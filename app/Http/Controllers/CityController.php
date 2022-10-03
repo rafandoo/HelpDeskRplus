@@ -44,9 +44,21 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function show(City $city)
+    public function show($id)
     {
         //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\City  $city
+     * @return \Illuminate\Http\Response
+     */
+    public function showState($state)
+    {
+        $cities = City::where('state_id', $state)->get();
+        return response()->json($cities);
     }
 
     /**

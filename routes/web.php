@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\CityController;
 
 
 /*
@@ -39,3 +40,5 @@ Route::resource('user', UserController::class);
 Route::get('user/{id}/active', [UserController::class, 'active'])->name('user.active');
 
 Route::resource('ticket', TicketController::class);
+
+Route::get('city/{state}/state', [CityController::class, 'showState'])->name('city.showState');

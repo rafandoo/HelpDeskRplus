@@ -78,13 +78,6 @@
         <div class="mb-3"><label class="form-label" for="cidade"><strong>Cidade</strong><br></label>
             <select class="form-select" id="city" required name="city">
                 <option value="" selected>Selecione uma opção</option>
-                @php 
-                    use App\Models\City;
-                    $cities = City::all();
-                @endphp
-                @foreach ($cities as $city)
-                    <option value="{{ $city->id }}" {{ isset($address) && $address->city == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
-                @endforeach
             </select>
         </div>
     </div>
