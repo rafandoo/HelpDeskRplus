@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Occurrence');
     }
+
+    public function sectors()
+    {
+        return $this->belongsToMany('App\Models\Sector')->using('App\Models\SectorUser');
+    }
 }

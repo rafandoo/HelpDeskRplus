@@ -18,4 +18,9 @@ class Sector extends Model
     {
         return $this->hasMany('App\Models\Ticket');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User')->using('App\Models\SectorUser');
+    }
 }
