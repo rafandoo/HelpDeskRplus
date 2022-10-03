@@ -32,7 +32,7 @@
                     <div class="collapse" id="collapse-1">
                         <div class="bg-white border rounded collapse-inner">
                             <a class="collapse-item" href="{{ route('client.index') }}">Clientes</a>
-                            <a class="collapse-item" href="">Usuários</a>
+                            <a class="collapse-item" href="{{ route('user.index') }}">Usuários</a>
                             <a class="collapse-item" href="{{ route('sector.index') }}">Setores</a>
                             <a class="collapse-item" href="{{ route('category.index') }}">Categorias</a>
                         </div>
