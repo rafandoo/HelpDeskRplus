@@ -16,7 +16,7 @@
                     </a>
                     <div class="collapse" id="collapse-3">
                         <div class="bg-white border rounded collapse-inner">
-                            <a class="collapse-item" href="cadTickets.php">Novo chamado</a>
+                            <a class="collapse-item" href="{{ route('ticket.create')}}">Novo chamado</a>
                             <a class="collapse-item" href="filaAtendimentos.php">Minha fila</a>
                             <a class="collapse-item" href="filaPendentes.php">Pendentes</a>
                         </div>

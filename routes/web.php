@@ -6,6 +6,7 @@ use App\Http\Controllers\SectorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TicketController;
 
 
 /*
@@ -36,3 +37,5 @@ Route::get('client/{id}/active', [ClientController::class, 'active'])->name('cli
 
 Route::resource('user', UserController::class);
 Route::get('user/{id}/active', [UserController::class, 'active'])->name('user.active');
+
+Route::resource('ticket', TicketController::class);
