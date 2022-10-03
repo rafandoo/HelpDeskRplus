@@ -52,15 +52,34 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+    
     /**
-     * Display the specified resource.
-     *
-     * @param  str  $login
-     * @return \Illuminate\Http\Response
+     * It checks if a user with the given login exists in the database
+     * 
+     * @param login The login of the user.
+     * 
+     * @return True or False
      */
     public function validateLogin($login)
     {
         $user = User::where('login', $login)->first();
+        if ($user) {
+            return response('True', 200);
+        } else {
+            return response('False', 200);
+        }
+    }
+
+    /**
+     * If the email exists in the database, return true, otherwise return false
+     * 
+     * @param email The email address to validate.
+     * 
+     * @return True or False
+     */
+    public function validateEmail($email)
+    {
+        $user = User::where('email', $email)->first();
         if ($user) {
             return response('True', 200);
         } else {

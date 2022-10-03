@@ -25,20 +25,27 @@ Route::get('/', function () {
     return view('home');
 });
 
+/* Creating a route for the home controller. */
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+/* Creating a route for the category controller. */
 Route::resource('category', CategoryController::class, ['except' => ['show', 'destroy']]);
 Route::get('category/{id}/active', [CategoryController::class, 'active'])->name('category.active');
 
+/* Creating a route for the sector controller. */
 Route::resource('sector', SectorController::class, ['except' => ['show', 'destroy']]);
 Route::get('sector/{id}/active', [SectorController::class, 'active'])->name('sector.active');
 
+/* Creating a route for the client controller. */
 Route::resource('client', ClientController::class);
 Route::get('client/{id}/active', [ClientController::class, 'active'])->name('client.active');
 
+/* Creating a route for the user controller. */
 Route::resource('user', UserController::class);
 Route::get('user/{id}/active', [UserController::class, 'active'])->name('user.active');
 Route::get('user/{login}/login', [UserController::class, 'validateLogin'])->name('user.validateLogin');
+Route::get('user/{email}/email', [UserController::class, 'validateEmail'])->name('user.validateEmail');
+
 
 Route::resource('ticket', TicketController::class);
 

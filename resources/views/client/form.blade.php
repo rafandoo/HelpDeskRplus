@@ -87,7 +87,6 @@
     <div class="col">
         <div class="mb-3"><label class="form-label" for="login"><strong>Usuário</strong></label>
             <div class="input-group"><span class="input-group-text">@</span>
-                <!--verificar valiadação de usuario-->
                 <input class="form-control" type="text" id="login" name="login" placeholder="user.name" required minlength="2" value="{{ isset($user) ? $user->login : '' }}" onchange="validateLogin(this)">
             </div>
         </div>
@@ -95,7 +94,7 @@
     <div class="col">
         <div class="mb-3"><label class="form-label" for="email"><strong>E-mail</strong></label>
             <!--verificar valiadação de email-->
-            <input class="form-control" type="email" id="email" name="email" placeholder="user@example.com" required value="{{ isset($client) ? $client->email : '' }}">
+            <input class="form-control" type="email" id="email" name="email" placeholder="user@example.com" required value="{{ isset($client) ? $client->email : '' }}" onchange="validateEmail(this)">
         </div>
     </div>
 </div>
