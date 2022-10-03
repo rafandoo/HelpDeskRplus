@@ -10,6 +10,11 @@
     @include('layouts.navbar')
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('assets/css/summernote.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/summernote-bs5.min.css') }}">
+@endsection
+
 @section('content')
     <h3 class="text-dark mb-4">Ticket</h3>
     <div class="row mb-3">
@@ -31,11 +36,20 @@
                             </div>
                         </div>
                         <div class="card-body" style="padding-top: 0px;">
-                            @include('ticket.form')
+                            <form method="post" action="{{ route('ticket.store') }}">
+                                @csrf
+                                @method('POST')
+                                @include('ticket.form')
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('assets/js/summernote-bs5.min.js') }}"></script>
+    <script src="{{ asset('assets/js/summernote.js') }}"></script>
 @endsection

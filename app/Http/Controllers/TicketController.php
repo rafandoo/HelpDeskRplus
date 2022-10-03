@@ -14,7 +14,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        $tickets = Ticket::all();
+        return view('ticket.index', compact('tickets'));
     }
 
     /**
@@ -35,7 +36,8 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Ticket::create($request->all());
+        return redirect()->route('ticket.index')->with('success', 'Ticket cadastrado com sucesso!');
     }
 
     /**
@@ -55,9 +57,10 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ticket $ticket)
+    public function edit($id)
     {
-        //
+        $ticket = Ticket::findOrFail($id);
+        return view('ticket.edit', compact('ticket'));
     }
 
     /**
@@ -67,9 +70,11 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ticket $ticket)
+    public function update(Request $request, $id)
     {
-        //
+        $ticket = Ticket::findOrFail($id);
+        $ticket->update($request->all());
+        return redirect()->route('ticket.index')->with('success', 'Ticket atualizado com sucesso!');
     }
 
     /**

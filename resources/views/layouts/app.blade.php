@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @yield('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Nunito.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/summernote.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/summernote-bs5.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bg-gradient.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Clients-UI.css') }}">
@@ -38,9 +37,8 @@
         </div>
     </div>
     <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/summernote-bs5.min.js') }}"></script>
-    <script src="{{ asset('assets/js/summernote.js') }}"></script>
     <script src="{{ asset('assets/js/theme.js') }}"></script>
     @yield('scripts')
 </body>

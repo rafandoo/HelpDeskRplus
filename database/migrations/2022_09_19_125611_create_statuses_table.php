@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('description', 15);
+            $table->string('description', 45);
             $table->boolean('active')->default(1);
             $table->timestamps();
         });
