@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            'Database\Seeders\PriorityTableSeeder'
+            'Database\Seeders\PriorityTableSeeder',
+            'Database\Seeders\StatusTableSeeder',
         ]);
 
         //$this->command->info('Priorities table seeded!');

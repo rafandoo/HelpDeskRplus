@@ -5,30 +5,30 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PriorityTableSeeder extends Seeder {
+class StatusTableSeeder extends Seeder {
 
     public function run() {
-        $priorities = [
+        $statuses = [
             [
-                'description' => 'Baixa',
+                'description' => 'Aguardando atendimento',
                 'active' => true
             ],
             [
-                'description' => 'Média',
+                'description' => 'Pendente',
                 'active' => true
             ],
             [
-                'description' => 'Alto',
+                'description' => 'Em andamento',
                 'active' => true
             ],
             [
-                'description' => 'Urgênte',
+                'description' => 'Finalizado',
                 'active' => true
             ]
         ];
 
-        foreach ($priorities as $priority) {
-            \App\Models\Priority::create($priority);
+        foreach ($statuses as $status) {
+            \App\Models\Status::create($status);
         }
     }
 }
