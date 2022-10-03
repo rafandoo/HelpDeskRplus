@@ -38,6 +38,7 @@ Route::get('client/{id}/active', [ClientController::class, 'active'])->name('cli
 
 Route::resource('user', UserController::class);
 Route::get('user/{id}/active', [UserController::class, 'active'])->name('user.active');
+Route::get('user/{login}/login', [UserController::class, 'validateLogin'])->name('user.validateLogin');
 
 Route::resource('ticket', TicketController::class);
 

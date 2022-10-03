@@ -48,7 +48,24 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return response()->json($user);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  str  $login
+     * @return \Illuminate\Http\Response
+     */
+    public function validateLogin($login)
+    {
+        $user = User::where('login', $login)->first();
+        if ($user) {
+            return response('True', 200);
+        } else {
+            return response('False', 200);
+        }
     }
 
     /**
