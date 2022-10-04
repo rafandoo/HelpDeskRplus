@@ -20,7 +20,7 @@
 <div class="row">
     <div class="col">
         <div class="mb-3"><label class="form-label" for="cpf_cnpj"><strong>CPF/CNPJ</strong><br></label>
-            <input class="form-control" type="text" id="cpf_cnpj" name="cpf_cnpj" require minlength="11" value="{{ isset($client) ? $client->cpf_cnpj : '' }}">
+            <input class="form-control" type="text" id="cpf_cnpj" name="cpf_cnpj" required minlength="11" value="{{ isset($client) ? $client->cpf_cnpj : '' }}" onchange="validateCpfCnpj(this)">
             <!-- incluir validação de cpf/cnpj UNICO -->
         </div>
     </div>
@@ -93,21 +93,27 @@
     </div>
     <div class="col">
         <div class="mb-3"><label class="form-label" for="email"><strong>E-mail</strong></label>
-            <!--verificar valiadação de email-->
             <input class="form-control" type="email" id="email" name="email" placeholder="user@example.com" required value="{{ isset($client) ? $client->email : '' }}" onchange="validateEmail(this)">
         </div>
     </div>
 </div>
 <div class="row">
-    <!--ver sobre validação de senha-->
     <div class="col">
         <div class="mb-3"><label class="form-label" for="password"><strong>Senha</strong><br></label>
-            <input class="form-control" type="password" id="password" name="password" placeholder="*******" minlength="8">
+            @if (isset($user))
+                <input class="form-control" type="password" id="password" name="password" placeholder="********" onchange="validatePassword(this)">
+            @else
+                <input class="form-control" type="password" id="password" name="password" placeholder="********" onchange="validatePassword(this)" required>
+            @endif
         </div>
     </div>
     <div class="col">
         <div class="mb-3"><label class="form-label" for="confirm_password"><strong>Confirmar senha</strong><br></label>
-            <input class="form-control" type="password" id="confirm_password" name="confirm_password" placeholder="*******" minlength="8">
+            @if (isset($user))
+                <input class="form-control" type="password" id="confirm_password" name="confirm_password" placeholder="********" onchange="validatePassword(this)">
+            @else
+                <input class="form-control" type="password" id="confirm_password" name="confirm_password" placeholder="********" onchange="validatePassword(this)" required>
+            @endif
         </div>
     </div>
 </div>

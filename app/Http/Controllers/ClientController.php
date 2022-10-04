@@ -52,6 +52,23 @@ class ClientController extends Controller
     }
 
     /**
+     * It checks if the CPF/CNPJ is already registered in the database
+     * 
+     * @param cpf_cnpj The CPF or CNPJ of the client.
+     * 
+     * @return True or False
+    */
+    public function validateCpfCnpj($cpf_cnpj)
+    {
+        $client = Client::where('cpf_cnpj', $cpf_cnpj)->first();
+        if ($client) {
+            return response('True', 200);
+        } else {
+            return response('False', 200);
+        }
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Client  $client
