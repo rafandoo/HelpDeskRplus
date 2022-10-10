@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\User;
+use App\Models\Address;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -36,7 +38,28 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        Client::create($request->all());
+        $u = new User();
+        $u->name = $request->name;
+        $u->email = $request->email;
+        $u->login = $request->login;
+        $u->password = bcrypt($request->password);
+        $u->access_level = 1;
+        $u->save();
+
+        $c = new Client();
+        $c = $c->create($request->all());
+        $c->user_id = $u->id;
+        $c->save();
+
+        $a = new Address();
+        $a->client_id = $c->id;
+        $a->zip_code = $request->zip_code;
+        $a->street = $request->street;
+        $a->number = $request->number;
+        $a->neighborhood = $request->neighborhood;
+        $a->complement = $request->complement;
+        $a->city_id = $request->city_id;
+        $a->save();
         return redirect()->route('client.index')->with('success', 'Cliente cadastrado com sucesso!');
     }
 

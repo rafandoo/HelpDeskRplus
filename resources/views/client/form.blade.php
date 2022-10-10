@@ -1,11 +1,13 @@
-@isset($client)
-    $address = Address::find($client->id);
-    $user = User::find($client->user_id);
-@endisset
+@php
+    use App\Models\Address;
+    use App\Models\User;
+
+    isset($client) ? $address = Address::where('client_id', $client->id)->first() : '';
+    isset($client) ? $user = User::find($client->user_id) : '';
+@endphp
 
 <div class="row">
     <input type="hidden" id="idCliente" name="idCliente" value="{{ isset($client) ? $client->id : '' }}">
-
     <div class="col">
         <div class="mb-3"><label class="form-label" for="name"><strong>Nome</strong></label>
             <input class="form-control" type="text" id="name" name="name" required minlength="2" value="{{ isset($client) ? $client->name : '' }}">
@@ -21,7 +23,6 @@
     <div class="col">
         <div class="mb-3"><label class="form-label" for="cpf_cnpj"><strong>CPF/CNPJ</strong><br></label>
             <input class="form-control" type="text" id="cpf_cnpj" name="cpf_cnpj" required minlength="11" value="{{ isset($client) ? $client->cpf_cnpj : '' }}" onchange="validateCpfCnpj(this)">
-            <!-- incluir validação de cpf/cnpj UNICO -->
         </div>
     </div>
     <div class="col">
@@ -71,12 +72,12 @@
                 @foreach ($states as $state)
                     <option value="{{ $state->id }}" {{ isset($address) && $address->state == $state->id ? 'selected' : '' }}>{{ $state->name }}</option>
                 @endforeach
-                
-            </select></div>
+            </select>
+        </div>
     </div>
     <div class="col">
-        <div class="mb-3"><label class="form-label" for="cidade"><strong>Cidade</strong><br></label>
-            <select class="form-select" id="city" required name="city">
+        <div class="mb-3"><label class="form-label" for="city_id"><strong>Cidade</strong><br></label>
+            <select class="form-select" id="city_id" required name="city_id">
                 <option value="" selected>Selecione uma opção</option>
             </select>
         </div>

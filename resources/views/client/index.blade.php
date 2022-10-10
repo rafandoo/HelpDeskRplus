@@ -51,11 +51,11 @@
                         @foreach ($clients as $client)
                             <tr class="align-middle">
                                 <td>{{ $client->id }}</td>
-                                <td>{{ $client->nome }}</td>
-                                <td>{{ $client->telefone }}</td>
+                                <td>{{ $client->name }}</td>
+                                <td>{{ $client->phone }}</td>
                                 <td>{{ $client->email }}</td>
-                                <td>{{ $client->cpfCnpj }}</td>
-                                <td>{{ $client->situacao }}</td>
+                                <td>{{ $client->cpf_cnpj }}</td>
+                                <td>{{ $client->active == 1 ? 'Ativo' : 'Inativo' }}</td>
                                 <td class="text-nowrap text-end align-middle">
                                     <a class="btn btn-outline-danger border rounded-circle" role="button" style="border-radius: 30px;margin-right: 10px;" href="{{ route('client.active', $client->id) }}" onclick="return confirm('Deseja mesmo mudar a situação desse cadastro?');">
                                         <i class="fas fa-lock"></i>
