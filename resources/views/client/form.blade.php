@@ -1,9 +1,8 @@
 @php
-    use App\Models\Address;
-    use App\Models\User;
-
-    isset($client) ? $address = Address::where('client_id', $client->id)->first() : '';
-    isset($client) ? $user = User::find($client->user_id) : '';
+    if (isset($client)) {
+        $address = App\Models\Address::where('client_id', $client->id)->first();
+        $user = App\Models\User::find($client->user_id);
+    }
 @endphp
 
 <div class="row">

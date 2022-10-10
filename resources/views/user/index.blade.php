@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-xl-3">
                     <div class="text-end">
-                        <a class="btn btn-primary" role="button" href="{{ route('user.create') }}">
+                        <a class="btn btn-success" role="button" href="{{ route('user.create') }}">
                             <i class="fas fa-plus"></i>
                             <span>&nbsp;Novo</span>
                         </a>
@@ -55,7 +55,6 @@
                             <th>Login</th>
                             <th>E-mail</th>
                             <th>Nível de acesso</th>
-                            <th>Setor</th>
                             <th>Situação</th>
                         </tr>
                     </thead>
@@ -66,9 +65,8 @@
                                 <td>{{ $user->name . ' ' . $user->last_name }}</td>
                                 <td>{{ $user->login }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->access_level }}</td>
-                                <td>NULL</td>
-                                <td>{{ $user->active }}</td>
+                                <td>{{ App\Models\AccessLevel::find($user->access_level)->name }}</td>
+                                <td>{{ $user->active == 1 ? 'Ativo' : 'Inativo' }}</td>
                                 <td class="text-end align-middle">
                                     <a class="btn btn-outline-danger border rounded-circle" role="button" style="border-radius: 30px;margin-right: 10px;" href="{{ route('user.active', $user->id) }}" onclick="return confirm('Deseja mesmo mudar a situação desse cadastro?');">
                                         <i class="fas fa-lock"></i>

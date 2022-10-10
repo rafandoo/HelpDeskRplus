@@ -40,3 +40,7 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script src="{{ asset('assets/js/validation.js') }}"></script>
+@endsection
