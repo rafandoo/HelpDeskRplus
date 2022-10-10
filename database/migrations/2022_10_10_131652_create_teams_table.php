@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sector_user', function (Blueprint $table) {
-            $table->foreignId('sector_id')->constrained('sectors');
+        Schema::create('teams', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users');
+                //->onUpdate('cascade')
+                //->onDelete('cascade');
+            $table->foreignId('sector_id')->constrained('sectors');
+                //->onUpdate('cascade')
+                //->onDelete('cascade');
             $table->boolean('administrator')->default(false);
+            $table->primary(['user_id', 'sector_id']);
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sector_user');
+        Schema::dropIfExists('teams');
     }
 };

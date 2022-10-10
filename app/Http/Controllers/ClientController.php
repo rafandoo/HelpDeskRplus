@@ -146,4 +146,10 @@ class ClientController extends Controller
         $client->save();
         return redirect()->route('client.index')->with('success', 'Situação atualizado com sucesso!');
     }
+
+    public function search($filter, $search)
+    {
+        $clients = Client::where($filter, 'like', '%' . $search . '%')->paginate(10);
+        return response()->json($clients);
+    }
 }

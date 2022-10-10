@@ -1,3 +1,7 @@
+/* This is a jQuery function that is called when the state dropdown is changed. It gets the value of
+the state dropdown and uses it to make an AJAX call to the server. The server returns a list of
+cities for the selected state and the jQuery function then populates the city dropdown with the
+returned list. */
 $("#state").change(function(){
     var state = $(this).val();
     var url = "/city/" + state + "/state";

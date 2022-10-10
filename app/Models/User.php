@@ -68,6 +68,8 @@ class User extends Authenticatable
 
     public function sectors()
     {
-        return $this->belongsToMany('App\Models\Sector')->using('App\Models\SectorUser');
+        return $this->belongsToMany('App\Models\Sector')
+            ->using('App\Models\Team')
+            ->withPivot('administrator');
     }
 }

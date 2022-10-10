@@ -40,6 +40,7 @@ Route::get('sector/{id}/active', [SectorController::class, 'active'])->name('sec
 Route::resource('client', ClientController::class);
 Route::get('client/{id}/active', [ClientController::class, 'active'])->name('client.active');
 Route::get('client/{cpf_cnpj}/cpf-cnpj', [ClientController::class, 'validateCpfCnpj'])->name('client.validateCpfCnpj');
+Route::get('client/{filter}/{search}', [ClientController::class, 'search'])->name('client.search');
 
 /* Creating a route for the user controller. */
 Route::resource('user', UserController::class);

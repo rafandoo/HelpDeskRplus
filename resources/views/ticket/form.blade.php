@@ -25,10 +25,10 @@
             <div class="input-group"><span class="input-group-text">Cliente</span>
                 <input class="bg-white form-control" type="text" id="client" readonly required name="client" value="">
                 <input type="hidden" id="client_id" name="client_id" value="">
-                <button class="btn btn-primary py-0" type="button" data-bs-target="#procurarCliente" data-bs-toggle="modal">
+                <button class="btn btn-primary" type="button" data-bs-target="#searchClient" data-bs-toggle="modal">
                     <i class="fas fa-search"></i>
                 </button>
-                <div class="modal fade input-group-text" role="dialog" tabindex="-1" id="procurarCliente" name="procurarCliente" style="padding-top: 0px;background: rgba(234,236,244,0);">
+                <div class="modal fade input-group-text" role="dialog" tabindex="-1" id="searchClient" name="searchClient" style="padding-top: 0px;background: rgba(234,236,244,0);">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -36,13 +36,13 @@
                             </div>
                             <div class="modal-body">
                                 <div class="input-group">
-                                    <select class="form-select" name="filtro" id="filtro">
-                                        <option value="nome" selected="">Nome</option>
-                                        <option value="idCliente">Código</option>
-                                        <option value="cpfCnpj">CPF/CNPJ</option>
+                                    <select class="form-select" name="filter" id="filter">
+                                        <option value="name">Nome</option>
+                                        <option value="client_id">Código</option>
+                                        <option value="cpf_cnpj">CPF/CNPJ</option>
                                     </select>
-                                    <input class="form-control" type="text" name="procurar" id="procurar" style="width: 461px;">
-                                    <button class="btn btn-primary" type="button" onclick="filtrarCliente()">
+                                    <input class="form-control" type="text" name="search" id="search" style="width: 461px;">
+                                    <button class="btn btn-primary" type="button" id="searchButton" name="searchButton">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </div>
@@ -57,7 +57,7 @@
                                             <th>Situação</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="dados" name="dados">
+                                    <tbody id="clients" name="clients">
                                         
                                     </tbody>
                                 </table>

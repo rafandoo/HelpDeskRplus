@@ -21,6 +21,8 @@ class Sector extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\Models\User')->using('App\Models\SectorUser');
+        return $this->belongsToMany('App\Models\User')
+            ->using('App\Models\Team')
+            ->withPivot('administrator');
     }
 }

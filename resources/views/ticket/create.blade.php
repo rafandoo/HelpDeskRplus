@@ -52,4 +52,5 @@
 @section('scripts')
     <script src="{{ asset('assets/js/summernote-bs5.min.js') }}"></script>
     <script src="{{ asset('assets/js/summernote.js') }}"></script>
+    <script src="{{ asset('assets/js/searchClients.js') }}"></script>
 @endsection
