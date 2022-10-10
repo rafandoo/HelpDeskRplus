@@ -18,14 +18,22 @@
                 <div class="col">
                     <div id="dataTable_filter-1" class="dataTables_filter">
                         <form method="get">
+                            @method('GET')
                             <div class="d-flex">
-                                <div style="margin-right: 20px;"><select class="form-select" id="filtro" style="width: 145px;" name="filtro">
-                                        <option value="nome" selected="">Nome</option>
-                                        <option value="idCliente">Código</option>
-                                        <option value="cpfCnpj">CPF/CNPJ</option>
-                                    </select></div>
+                                <div style="margin-right: 20px;">
+                                    <select class="form-select" id="filter" style="width: 145px;" name="filter">
+                                        <option value="name">Nome</option>
+                                        <option value="id">Código</option>
+                                        <option value="cpf_cnpj">CPF/CNPJ</option>
+                                    </select>
+                                </div>
                                 <div>
-                                    <div class="input-group" style="width: 270px;"><input class="form-control form-control-sm" type="search" id="procurar" aria-controls="dataTable" placeholder="Buscar" name="procurar"><button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button></div>
+                                    <div class="input-group" style="width: 270px;">
+                                        <input class="form-control form-control-sm" type="search" id="search" name="search" aria-controls="dataTable" placeholder="Buscar">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </form>

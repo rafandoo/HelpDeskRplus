@@ -14,7 +14,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('access_level', '>', 1)->get();
+        $search = request('search');
+        $filter = request('filter');
+
+        if ($search) {
+            $users = User::where($filter, 'like', '%' . $search . '%')
+                ->where('access_level', '!=', 1)
+                ->paginate(10);
+        } else {
+            $users = User::where('access_level', '!=', 1)
+                ->paginate(10);
+        }
         return view('user.index', compact('users'));
     }
 

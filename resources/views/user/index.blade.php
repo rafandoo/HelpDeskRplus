@@ -18,16 +18,18 @@
                 <div class="col">
                     <div id="dataTable_filter" class="dataTables_filter">
                         <form method="get">
+                            @method('GET')
                             <div class="d-flex">
                                 <div style="margin-right: 20px;">
-                                    <select class="form-select" id="filtro" style="width: 145px;" name="filtro">
-                                        <option value="nome" selected="">Nome</option>
-                                        <option value="idUsuario">Codigo</option>
+                                    <select class="form-select" id="filter" style="width: 145px;" name="filter">
+                                        <option value="name">Nome</option>
+                                        <option value="id">Codigo</option>
                                         <option value="login">Login</option>
-                                    </select></div>
+                                    </select>
+                                </div>
                                 <div>
                                     <div class="input-group" style="width: 270px;">
-                                        <input class="form-control form-control-sm" type="search" id="procurar" aria-controls="dataTable" placeholder="Buscar" name="procurar">
+                                        <input class="form-control form-control-sm" type="search" id="search" name="search" aria-controls="dataTable" placeholder="Buscar">
                                         <button class="btn btn-primary" type="submit">
                                             <i class="fas fa-search"></i>
                                         </button>

@@ -16,7 +16,14 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
+        $search = request('search');
+        $filter = request('filter');
+
+        if ($search) {
+            $clients = Client::where($filter, 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            $clients = Client::paginate(10);
+        }
         return view('client.index', compact('clients'));
     }
 
