@@ -67,10 +67,15 @@
                 <option value="" selected>Selecione uma opção</option>
                 @php 
                     use App\Models\State;
+                    use App\Models\City;
+                    
                     $states = State::all();
+                    if (isset($address)) {
+                        $city = City::find($address->city_id);
+                    }
                 @endphp
                 @foreach ($states as $state)
-                    <option value="{{ $state->id }}" {{ isset($address) && $address->state == $state->id ? 'selected' : '' }}>{{ $state->name }}</option>
+                    <option value="{{ $state->id }}" {{ isset($address) && $city->state_id == $state->id ? 'selected' : '' }}>{{ $state->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -78,7 +83,11 @@
     <div class="col">
         <div class="mb-3"><label class="form-label" for="city_id"><strong>Cidade</strong><br></label>
             <select class="form-select" id="city_id" required name="city_id">
-                <option value="" selected>Selecione uma opção</option>
+                @if (isset($address))
+                    <option value="{{ $city->id }}" selected>{{ $city->name }}</option>
+                @else
+                    <option value="" selected>Selecione uma opção</option>
+                @endif
             </select>
         </div>
     </div>
