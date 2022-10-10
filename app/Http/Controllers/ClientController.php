@@ -149,7 +149,11 @@ class ClientController extends Controller
 
     public function search($filter, $search)
     {
-        $clients = Client::where($filter, 'like', '%' . $search . '%')->paginate(10);
+        if($search == 'all') {
+            $clients = Client::all();
+        } else {
+            $clients = Client::where($filter, 'like', '%' . $search . '%')->get();
+        }
         return response()->json($clients);
     }
 }
