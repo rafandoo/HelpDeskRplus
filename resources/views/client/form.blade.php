@@ -66,12 +66,9 @@
             <select class="form-select" id="state" required name="state">
                 <option value="" selected>Selecione uma opção</option>
                 @php 
-                    use App\Models\State;
-                    use App\Models\City;
-                    
-                    $states = State::all();
+                    $states = App\Models\State::all();
                     if (isset($address)) {
-                        $city = City::find($address->city_id);
+                        $city = App\Models\City::find($address->city_id);
                     }
                 @endphp
                 @foreach ($states as $state)
@@ -120,9 +117,9 @@
     <div class="col">
         <div class="mb-3"><label class="form-label" for="confirm_password"><strong>Confirmar senha</strong><br></label>
             @if (isset($user))
-                <input class="form-control" type="password" id="confirm_password" name="confirm_password" placeholder="********" onchange="validatePassword(this)">
+                <input class="form-control" type="password" id="confirm_password" name="confirm_password" placeholder="********" onchange="confirmPassword(this)">
             @else
-                <input class="form-control" type="password" id="confirm_password" name="confirm_password" placeholder="********" onchange="validatePassword(this)" required>
+                <input class="form-control" type="password" id="confirm_password" name="confirm_password" placeholder="********" onchange="confirmPassword(this)" required>
             @endif
         </div>
     </div>

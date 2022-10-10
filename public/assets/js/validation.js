@@ -80,14 +80,14 @@ function validatePassword(input) {
  */
 function confirmPassword(input) {
     if (input.value != $("#password").val()) {
-        $("#confirmPassword").addClass("is-invalid");
-        $("#confirmPassword").removeClass("is-valid");
-        $("#confirmPassword").next().text("As senhas não conferem");
+        $("#confirm_password").addClass("is-invalid");
+        $("#confirm_password").removeClass("is-valid");
+        $("#confirm_password").next().text("As senhas não conferem");
         input.setCustomValidity("As senhas não conferem");
     } else {
-        $("#confirmPassword").addClass("is-valid");
-        $("#confirmPassword").removeClass("is-invalid");
-        $("#confirmPassword").next().text("");
+        $("#confirm_password").addClass("is-valid");
+        $("#confirm_password").removeClass("is-invalid");
+        $("#confirm_password").next().text("");
         input.setCustomValidity("");
     }
 }

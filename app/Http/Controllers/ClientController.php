@@ -113,6 +113,11 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $client = Client::findOrFail($id);
+        $user = User::findOrFail($client->user_id);
+        $address = Address::where('client_id', $client->id)->first();
+
+        $user->update($request->all());
+        $address->update($request->all());
         $client->update($request->all());
         return redirect()->route('client.index')->with('success', 'Cliente atualizado com sucesso!');
     }

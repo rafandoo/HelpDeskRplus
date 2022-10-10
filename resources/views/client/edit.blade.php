@@ -33,3 +33,8 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script src="{{ asset('assets/js/searchCities.js') }}"></script>
+    <script src="{{ asset('assets/js/validation.js') }}"></script>
+@endsection
