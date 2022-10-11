@@ -23,8 +23,7 @@
                                     <select class="form-select" id="priority_filter" name="priority_filter">
                                         <option value="0">Selecione uma opção</option>
                                         @php 
-                                            use App\Models\Priority;
-                                            $priorities = Priority::all();
+                                            $priorities = App\Models\Priority::all();
                                         @endphp
                                         @foreach ($priorities as $priority)
                                             <option value="{{ $priority->id }}" {{ isset($priority_filter) && $priority_filter == $priority->id ? 'selected' : '' }}>{{ $priority->description }}</option>
@@ -37,8 +36,7 @@
                                     <select class="form-select" id="status_filter" name="status_filter">
                                         <option value="0">Selecione uma opção</option>
                                         @php 
-                                            use App\Models\Status;
-                                            $statuses = Status::all();
+                                            $statuses = App\Models\Status::all();
                                         @endphp
                                         @foreach ($statuses as $status)
                                             <option value="{{ $status->id }}" {{ isset($status_filter) && $status_filter == $status->id ? 'selected' : '' }}>{{ $status->description }}</option>
@@ -54,9 +52,8 @@
                                 <div class="input-group"><span class="input-group-text">Categoria</span>
                                     <select class="form-select" id="category_filter" name="category_filter" style="margin-right: 10px;">
                                         <option value="0">Selecione uma opção</option>
-                                        @php 
-                                            use App\Models\Category;
-                                            $categories = Category::all();
+                                        @php
+                                            $categories = App\Models\Category::all();
                                         @endphp
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}" {{ isset($category_filter) && $category_filter == $category->id ? 'selected' : '' }}>{{ $category->description }}</option>
@@ -69,8 +66,7 @@
                                     <select class="form-select" id="user_filter" name="user_filter" style="margin-right: 10px;">
                                         <option value="0">Selecione uma opção</option>
                                         @php 
-                                            use App\Models\User;
-                                            $users = User::all();
+                                            $users = App\Models\User::all();
                                         @endphp
                                         @foreach ($users as $user)
                                             <option value="{{ $user->id }}" {{ isset($user_filter) && $user_filter == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
@@ -84,49 +80,49 @@
                         <div id="dataTableFilter3" class="dataTables_filter">
                             <div style="margin-bottom: 15px;">
                                 <div class="input-group"><span class="input-group-text">Cliente</span>
-                                    <input class="form-control" type="text" id="cliente" name="cliente">
-                                    <input type="hidden" name="filtroCliente" id="idCliente" value="0">
-                                    <button class="btn btn-primary" type="button" data-bs-target="#procurarCliente" data-bs-toggle="modal"><i class="fas fa-search"></i></button>
+                                    <input class="bg-white form-control" type="text" id="client" name="client" readonly>
+                                    <input type="hidden" name="client_id" id="client_id" value="">
+                                    <button class="btn btn-primary" type="button" data-bs-target="#searchClient" data-bs-toggle="modal"><i class="fas fa-search"></i></button>
                                 </div>
                             </div>
-                            <div class="modal fade input-group-text" role="dialog" tabindex="-1" id="procurarCliente" name="procurarCliente" style="padding-top: 0px;background: rgba(234,236,244,0);">
-                                                    <div class="modal-dialog modal-lg" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title">Procurar cliente</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <div class="input-group">
-                                                                    <select class="form-select" name="filtro" id="filtro">
-                                                                        <option value="nome" selected="">Nome</option>
-                                                                        <option value="idCliente">Código</option>
-                                                                        <option value="cpfCnpj">CPF/CNPJ</option>
-                                                                    </select>
-                                                                    <input class="form-control" type="text" name="procurar" id="procurar" style="width: 461px;">
-                                                                    <button class="btn btn-primary" type="button" onclick="filtrarCliente()">
-                                                                        <i class="fas fa-search"></i>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                            <div class="table-responsive" role="grid">
-                                                                <table class="table table-hover my-0">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Código</th>
-                                                                            <th>Nome</th>
-                                                                            <th>CFP/CNPJ</th>
-                                                                            <th>Situação</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody id="dados" name="dados">
-                                                                        
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                            <div class="modal-footer"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                            <div class="modal fade input-group-text" role="dialog" tabindex="-1" id="searchClient" name="searchClient" style="padding-top: 0px;background: rgba(234,236,244,0);">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Procurar cliente</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="input-group">
+                                                <select class="form-select" name="filter" id="filter">
+                                                    <option value="name">Nome</option>
+                                                    <option value="client_id">Código</option>
+                                                    <option value="cpf_cnpj">CPF/CNPJ</option>
+                                                </select>
+                                                <input class="form-control" type="text" name="search" id="search" style="width: 461px;">
+                                                <button class="btn btn-primary" type="button" id="searchButton" name="searchButton">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive" role="grid">
+                                            <table class="table table-hover my-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Código</th>
+                                                        <th>Nome</th>
+                                                        <th>CFP/CNPJ</th>
+                                                        <th>Situação</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="clients" name="clients">
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer"></div>
+                                    </div>
+                                </div>
+                            </div>
                             <div style="margin-bottom: 15px;">
                                 <div class="input-group"><span class="input-group-text">Setor</span>
                                     <select class="form-select" id="sector_filter" name="sector_filter" style="margin-right: 10px;">
@@ -144,7 +140,7 @@
                         </div>
                     </div>
                     <div class="col-xl-2 col-xxl-2 offset-xl-10 offset-xxl-1">
-                        <div class="text-end" style="margin-bottom: 10px;"><button class="btn btn-warning" type="submit"><i class="fas fa-filter"></i><span>&nbsp;Filtrar</span></button><a class="btn btn-secondary" role="button" style="margin-left: 10px;" href="filaAtendimentos.php"><i class="far fa-times-circle"></i><span>&nbsp;Limpar</span></a></div>
+                        <div class="text-end" style="margin-bottom: 10px;"><button class="btn btn-warning" type="submit"><i class="fas fa-filter"></i><span>&nbsp;Filtrar</span></button><a class="btn btn-secondary" role="button" style="margin-left: 10px;" href="{{ route('ticket.index') }}"><i class="far fa-times-circle"></i><span>&nbsp;Limpar</span></a></div>
                         <div class="text-end" style="margin-bottom: 10px;">
                             <a class="btn btn-success" role="button" href="{{ route('ticket.create') }}"><i class="fas fa-plus"></i><span>&nbsp;Novo</span></a>
                         </div>
@@ -213,4 +209,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('assets/js/searchClients.js') }}"></script>
 @endsection
