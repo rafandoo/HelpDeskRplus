@@ -24,13 +24,21 @@ The present Help Desk system project was developed for the WEB II Development co
 
 ## Configuration ⚙️
 
+### Minimum requirements
+
+- PHP - v8.1.X.
+- MySQL - v10.4.22 or above.
+- Composer - v2.3.10 or above.
+
 ### Installation
 
 To run this project, you will need to install PHP, MySQL and Composer. 
-Once installed, run the following steps and commands in the shell:
+Once installed, run the following steps:
 
 - Copy the .env.example and rename to .env.
 - Change the .env file informing the connection data and passwords.
+
+Then run the following commands in the shell:
 
 ```shell
    composer install
@@ -38,12 +46,15 @@ Once installed, run the following steps and commands in the shell:
    php artisan key:generate
 ```
 
-### Requirements
+### Database configuration
 
-- PHP - v8.1.2
-- MySQL - v10.4.22
-- Composer - v2.3.10
-- Laravel - v9.x
+It's necessary to create a database with the default configuration in advance, then run the following commands in the shell to create the tables and perform the inclusion of the initial data:
+
+```shell
+   php artisan migrate
+
+   php artisan db:seed
+```
 
 ## How to execute ▶️
 
@@ -94,5 +105,5 @@ This project is not yet in its final version.
 
 The [MIT License]() (MIT)
 
-Copyright :copyright: 2022 - Rafael Camargo
+Copyright ©️ 2022 - Rafael Camargo
 
