@@ -99,13 +99,6 @@
             <div class="input-group"><span class="input-group-text">Técnico</span>
                 <select class="form-select" id="user_id" required name="user_id">
                     <option value="">Selecione uma opção</option>
-                    @php 
-                        use App\Models\User;
-                        $users = User::all();
-                    @endphp
-                    @foreach ($users as $user)
-                        <option value="{{ $user->id }}" {{ isset($ticket) && $ticket->user_id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
-                    @endforeach
                 </select>
             </div>
         </div>

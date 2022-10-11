@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sector;
+
 use Illuminate\Http\Request;
 
 class SectorController extends Controller
@@ -93,5 +94,22 @@ class SectorController extends Controller
         }
         $sector->save();
         return redirect()->route('sector.index')->with('success', 'Situação alterado com sucesso!');
+    }
+
+    /**
+     * It gets all the teams that belong to a sector, then gets all the users that belong to those teams
+     * 
+     * @param id The id of the sector
+     * 
+     * @return An array of users that belong to a specific sector.
+     */
+    public function users($id)
+    {
+        $teams = \App\Models\Team::where('sector_id', $id)->get();
+        $users = [];
+        foreach ($teams as $team) {
+            $users = array_merge($users, \App\Models\User::where('id', $team->user_id)->get()->toArray());
+        }
+        return response()->json($users);
     }
 }

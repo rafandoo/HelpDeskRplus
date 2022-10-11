@@ -35,6 +35,7 @@ Route::get('category/{id}/active', [CategoryController::class, 'active'])->name(
 /* Creating a route for the sector controller. */
 Route::resource('sector', SectorController::class, ['except' => ['show', 'destroy']]);
 Route::get('sector/{id}/active', [SectorController::class, 'active'])->name('sector.active');
+Route::get('sector/{id}/users', [SectorController::class, 'users'])->name('sector.users');
 
 /* Creating a route for the client controller. */
 Route::resource('client', ClientController::class);
