@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('description');
-            $table->dateTime('opened_at');
+            $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
             $table->dateTime('closed_at')->nullable();
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('priority_id')->constrained('priorities');
-            $table->foreignId('status_id')->constrained('statuses');
+            $table->foreignId('status_id')->constrained('statuses')->default(1);
             $table->foreignId('sector_id')->constrained('sectors');
             $table->foreignId('client_id')->constrained('clients');
             $table->string('contact');

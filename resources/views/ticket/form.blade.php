@@ -81,7 +81,7 @@
     <div class="col-xl-5 col-xxl-4">
         <div class="mb-3">
             <div class="input-group"><span class="input-group-text">Setor</span>
-                <select class="form-select" id="sector" required name="sector">
+                <select class="form-select" id="sector_id" required name="sector_id">
                     <option value="">Selecione uma opção</option>
                     @php 
                         $sectors = App\Models\Sector::all();
@@ -105,8 +105,13 @@
     <div class="col-xl-5 col-xxl-4">
         <div class="mb-3">
             <div class="input-group"><span class="input-group-text">Estado</span>
-                <input class="bg-white form-control" type="text" id="status" name="status" readonly value="">
-                <input type="hidden" name="status_id" value="">
+                @if (isset($ticket))
+                    <input class="bg-white form-control" type="text" id="status" name="status" readonly placeholder="{{ App\Models\Status::find($ticket->status_id)->description }}">
+                    <input type="hidden" id="status_id" name="status_id" value="{{ $ticket->status_id }}">
+                @else
+                    <input class="bg-white form-control" type="text" id="status" name="status" readonly placeholder="{{ App\Models\Status::find(1)->description }}">
+                    <input type="hidden" id="status_id" name="status_id" value="1">
+                @endif
             </div>
         </div>
     </div>
@@ -115,7 +120,7 @@
     <div class="col-xl-5 col-xxl-5">
         <div class="mb-3">
             <div class="input-group"><span class="input-group-text">Categoria</span>
-                <select class="form-select" id="category" required name="category">
+                <select class="form-select" id="category_id" required name="category_id">
                     <option value="">Selecione uma opção</option>
                     @php 
                         $categories = App\Models\Category::all();

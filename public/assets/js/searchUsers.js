@@ -2,7 +2,7 @@
 value of the select and uses it to make an ajax request to the url /sector/{sector}/users. When the
 request is completed, it empties the select with id user_id and fills it with the data returned by
 the request. */
-$("#sector").change(function(){
+$("#sector_id").change(function(){
     var sector = $(this).val();
     var url = "/sector/" + sector + "/users";
     $.get(url, function(data){

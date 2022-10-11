@@ -128,8 +128,7 @@
                                     <select class="form-select" id="sector_filter" name="sector_filter" style="margin-right: 10px;">
                                         <option value="0">Selecione uma opção</option>
                                         @php 
-                                            use App\Models\Sector;
-                                            $sectors = Sector::all();
+                                            $sectors = App\Models\Sector::all();
                                         @endphp
                                         @foreach ($sectors as $sector)
                                             <option value="{{ $sector->id }}" {{ isset($sector_filter) && $sector_filter == $sector->id ? 'selected' : '' }}>{{ $sector->description }}</option>
@@ -172,9 +171,9 @@
                             <td>{{ $ticket->client->name }}</td>
                             <td>{{ $ticket->title }}</td>
                             <td>{{ $ticket->created_at }}</td>
-                            <td>{{ $ticket->priority }}</td>
-                            <td>{{ $ticket->status }}</td>
-                            <td>{{ $ticket->user_id->name }}</td>
+                            <td>{{ App\Models\Priority::find($ticket->priority_id)->description }}</td>
+                            <td>{{ App\Models\Status::find($ticket->status_id)->description }}</td>
+                            <td>{{ App\Models\User::find($ticket->user_id)->name }}</td>
                             <td>{{ $ticket->updated_at }}</td>
                             <td class="text-nowrap text-end align-middle">
                                 <!--<php if ($_SESSION['nivelAcesso'] != 3) echo "onclick='alertSemPermissao()'"; else echo "onclick='confirmExclusao($url)'";>-->
