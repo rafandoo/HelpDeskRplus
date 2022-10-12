@@ -103,7 +103,7 @@ This project is not yet in its final version.
 
 ## License 🔑
 
-The [MIT License]() (MIT)
+The [MIT License](https://github.com/rafandoo/HelpDeskRplus/blob/f78ea11cbcc38ee4a13ce5be79aa4a35c34a2f01/LICENSE) (MIT)
 
 Copyright ©️ 2022 - Rafael Camargo
 
