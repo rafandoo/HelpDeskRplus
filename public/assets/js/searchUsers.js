@@ -6,7 +6,6 @@ $("#sector_id").change(function(){
     var sector = $(this).val();
     var url = "/sector/" + sector + "/users";
     $.get(url, function(data){
-        console.log(data);
         $("#user_id").empty();
         $.each(data, function(i, user){
             $("#user_id").append("<option value='" + user.id + "'>" + user.name + " " + user.last_name + "</option>");
