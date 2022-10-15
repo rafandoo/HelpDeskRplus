@@ -13,7 +13,6 @@ function validateLogin(input) {
             $("#login").removeClass("is-valid");
             $("#login").next().text("Login já cadastrado");
             input.setCustomValidity("Login já existe, por favor escolha outro");
-            $
         } else {
             $("#login").addClass("is-valid");
             $("#login").removeClass("is-invalid");
