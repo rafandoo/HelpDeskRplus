@@ -31,7 +31,7 @@
                                 <div class="col text-end">
                                     <!--onclick="validaTicket('listaTramites.php?idTicket=')"-->
                                     <a class="btn btn-primary" role="button" style="margin-right: 10px;">Ordem de Serviço</a>
-                                    <a class="btn btn-primary" role="button">Trâmites</a>
+                                    <a class="btn btn-primary" role="button" href="{{ route('occurrences.index', $ticket->id) }}">Trâmites</a>
                                 </div>
                             </div>
                         </div>

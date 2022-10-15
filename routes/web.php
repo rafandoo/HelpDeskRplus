@@ -8,6 +8,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\OccurrencesController;
 
 
 /*
@@ -53,5 +54,9 @@ Route::resource('user', UserController::class);
 Route::get('ticket/outstanding', [TicketController::class, 'outstanding'])->name('ticket.outstanding');
 Route::resource('ticket', TicketController::class, ['except' => ['show']]);
 
+/* Creating a route for the occurrences controller. */
+Route::get('occurrences/{id}', [OccurrencesController::class, 'index'])->name('occurrences.index');
+Route::get('occurrences/{id}/create', [OccurrencesController::class, 'create'])->name('occurrences.create');
+Route::post('occurrences/store', [OccurrencesController::class, 'store'])->name('occurrences.store');
 
 Route::get('city/{state}/state', [CityController::class, 'showState'])->name('city.showState');

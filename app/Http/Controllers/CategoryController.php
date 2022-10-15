@@ -65,7 +65,6 @@ class CategoryController extends Controller
         return redirect()->route('category.index')->with('success', 'Categoria atualizada com sucesso!');
     }
 
-
     /**
      * Change the status of the specified resource from storage.
      *
