@@ -41,18 +41,6 @@ class CategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $category = Category::findOrFail($id);
-        return view('category.show', ['category' => $category]);
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Category  $category

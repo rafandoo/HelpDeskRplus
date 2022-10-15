@@ -13,15 +13,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\AccessLevel  $accessLevel
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 }

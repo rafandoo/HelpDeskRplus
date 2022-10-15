@@ -22,7 +22,8 @@ class ClientController extends Controller
         if ($search) {
             $clients = Client::where($filter, 'like', '%' . $search . '%')->paginate(10);
         } else {
-            $clients = Client::paginate(10);
+            //$clients = Client::paginate(10);
+            $clients = Client::all();
         }
         return view('client.index', compact('clients'));
     }
@@ -76,9 +77,10 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show($id)
     {
-        //
+        $client = Client::findOrFail($id);
+        return response()->json($client);
     }
 
     /**

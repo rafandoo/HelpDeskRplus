@@ -42,18 +42,6 @@ class SectorController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Sector  $sector
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $sector = Sector::findOrFail($id);
-        return view('sector.show', ['sector' => $sector]);
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Sector  $sector

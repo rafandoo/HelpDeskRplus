@@ -20,10 +20,11 @@ class UserController extends Controller
         if ($search) {
             $users = User::where($filter, 'like', '%' . $search . '%')
                 ->where('access_level', '!=', 1)
-                ->paginate(10);
+                ->get();
         } else {
             $users = User::where('access_level', '!=', 1)
-                ->paginate(10);
+                //->paginate(10);
+                ->get();
         }
         return view('user.index', compact('users'));
     }
@@ -62,7 +63,6 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    
     /**
      * It checks if a user with the given login exists in the database
      * 
@@ -131,10 +131,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('user.index')->with('success', 'Usuário excluído com sucesso!');
     }
 
-        /**
+    /**
      * Change the status of the specified resource from storage.
      *
      * @param  \App\Models\User  $user
