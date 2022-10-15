@@ -84,7 +84,7 @@
                 <select class="form-select" id="sector_id" required name="sector_id">
                     <option value="">Selecione uma opção</option>
                     @php 
-                        $sectors = App\Models\Sector::all();
+                        $sectors = App\Models\Sector::where('active', 1)->get();
                     @endphp
                     @foreach ($sectors as $sector)
                         <option value="{{ $sector->id }}" {{ isset($ticket) && $ticket->sector_id == $sector->id ? 'selected' : '' }}>{{ $sector->description }}</option>
@@ -129,7 +129,7 @@
                 <select class="form-select" id="category_id" required name="category_id">
                     <option value="">Selecione uma opção</option>
                     @php 
-                        $categories = App\Models\Category::all();
+                        $categories = App\Models\Category::where('active', 1)->get();
                     @endphp
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" {{ isset($ticket) && $ticket->category_id == $category->id ? 'selected' : '' }}>{{ $category->description }}</option>

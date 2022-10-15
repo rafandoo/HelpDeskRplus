@@ -108,7 +108,10 @@ class SectorController extends Controller
         $teams = \App\Models\Team::where('sector_id', $id)->get();
         $users = [];
         foreach ($teams as $team) {
-            $users = array_merge($users, \App\Models\User::where('id', $team->user_id)->get()->toArray());
+            $users = array_merge($users, \App\Models\User::where('id', $team->user_id)
+                ->where('active', 1)
+                ->get()
+                ->toArray());
         }
         return response()->json($users);
     }

@@ -36,19 +36,8 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        Ticket::create($request->all());
-        return redirect()->route('ticket.index')->with('success', 'Ticket cadastrado com sucesso!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Ticket $ticket)
-    {
-        //
+        $ticket = Ticket::create($request->all());
+        return redirect()->route('ticket.edit', $ticket->id)->with('success', 'Ticket cadastrado com sucesso!');
     }
 
     /**
