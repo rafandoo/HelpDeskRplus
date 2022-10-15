@@ -19,7 +19,7 @@
                         <div class="bg-white border rounded collapse-inner">
                             <a class="collapse-item" href="{{ route('ticket.create')}}">Novo chamado</a>
                             <a class="collapse-item" href="{{ route('ticket.index')}}">Meus chamados</a>
-                            <a class="collapse-item" href="filaPendentes.php">Pendentes</a>
+                            <a class="collapse-item" href="{{ route('ticket.outstanding')}}">Pendentes</a>
                         </div>
                     </div>
                 </div>

@@ -78,13 +78,26 @@ class TicketController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function outstanding()
+    {
+        $tickets = Ticket::where('status_id', 1)->get();
+        return view('ticket.outstanding', compact('tickets'));
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ticket $ticket)
+    public function destroy($id)
     {
-        //
+        $ticket = Ticket::findOrFail($id);
+        $ticket->delete();
+        return redirect()->route('ticket.index')->with('success', 'Ticket excluído com sucesso!');
     }
 }

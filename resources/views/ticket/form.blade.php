@@ -7,7 +7,7 @@
     <div class="col-xl-4 col-xxl-4">
         <div class="mb-3">
             <div class="input-group"><span class="input-group-text">Data de abertura</span>
-                <input class="bg-white form-control" id="opened_at" readonly type="datetime-local" name="opened_at" value="{{ isset($ticket) ? $ticket->opened_at : date('Y-m-d\TH:i:s') }}">
+                <input class="bg-white form-control" id="created_at" readonly type="datetime-local" name="created_at" value="{{ isset($ticket) ? $ticket->created_at : date('Y-m-d\TH:i:s') }}">
             </div>
         </div>
     </div>
@@ -23,8 +23,8 @@
     <div class="col-lg-7 col-xl-7 col-xxl-8">
         <div class="mb-3">
             <div class="input-group"><span class="input-group-text">Cliente</span>
-                <input class="bg-white form-control" type="text" id="client" readonly required name="client" value="">
-                <input type="hidden" id="client_id" name="client_id" value="">
+                <input class="bg-white form-control" type="text" id="client" readonly required name="client" value="{{ isset($ticket) ? $ticket->client->name : '' }}">
+                <input type="hidden" id="client_id" name="client_id" value="{{ isset($ticket) ? $ticket->client_id : '' }}">
                 <button class="btn btn-primary" type="button" data-bs-target="#searchClient" data-bs-toggle="modal">
                     <i class="fas fa-search"></i>
                 </button>
@@ -98,6 +98,12 @@
             <div class="input-group"><span class="input-group-text">Técnico</span>
                 <select class="form-select" id="user_id" required name="user_id">
                     <option value="">Selecione uma opção</option>
+                    @if (isset($ticket))
+                        @php 
+                            $user = App\Models\User::find($ticket->user_id);
+                        @endphp
+                        <option value="{{ $user->id }}" {{ isset($ticket) && $ticket->user_id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                    @endif
                 </select>
             </div>
         </div>
@@ -167,5 +173,5 @@
 </div>
 <div class="mb-3">
     <button class="btn btn-primary" type="submit" style="margin-right: 10px;">Salvar</button>
-    <a class="btn btn-primary" role="button" href="filaAtendimentos.php">Voltar</a>
+    <a class="btn btn-primary" role="button" href="{{ route('ticket.index') }}">Voltar</a>
 </div>

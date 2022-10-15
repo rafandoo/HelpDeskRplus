@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="card-body" style="padding-top: 0px;">
-                            <form method="post" action="{{ route('ticket.update') }}">
+                            <form method="post" action="{{ route('ticket.update', $ticket->id) }}">
                                 @csrf
                                 @method('PUT')
                                 @include('ticket.form')
