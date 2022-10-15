@@ -18,6 +18,8 @@ class Occurrences extends Model
         'user_id'
     ];
 
+    public $timestamps = false;
+
     public function ticket()
     {
         return $this->belongsTo('App\Models\Ticket');

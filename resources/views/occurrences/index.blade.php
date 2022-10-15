@@ -30,7 +30,7 @@
                     <div style="margin-bottom: 15px;">
                         <div class="input-group">
                             <span class="input-group-text">Total horas</span>
-                            <input class="bg-white form-control" id="horaTotal" name="horaTotal" readonly="" style="margin-right: 10px;" type="time">
+                            <input class="bg-white form-control" id="amount_hours" name="amount_hours" readonly style="margin-right: 10px;" type="time">
                         </div>
                     </div>
                 </div>
@@ -78,10 +78,10 @@
                     @foreach ($occurrences as $occurrence)
                     <tr class="align-middle">
                         <td class="text-nowrap">{{ $occurrence->id }}</td>
-                        <td class="text-nowrap">{{ $occurrence->date }}</td>
+                        <td class="text-nowrap">{{ $occurrence->created_at }}</td>
                         <td class="text-nowrap">{{ $occurrence->initial_time }}</td>
                         <td class="text-nowrap">{{ $occurrence->final_time }}</td>
-                        <td class="text-nowrap">{{ $occurrence->description }}</td>
+                        <td class="text-nowrap">@php echo $occurrence->description @endphp</td>
                         <td class="text-nowrap">{{ $occurrence->user->name }}</td>
                     </tr>
                     @endforeach
@@ -95,4 +95,9 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
+    <script src="{{ asset('assets/js/amountHours.js') }}"></script>
 @endsection

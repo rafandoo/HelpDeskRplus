@@ -40,6 +40,7 @@ class OccurrencesController extends Controller
     public function store(Request $request)
     {
         $occurrence = new Occurrences();
+        $occurrence->created_at = $request->created_at;
         $occurrence->initial_time = $request->initial_time;
         $occurrence->final_time = $request->final_time;
         $occurrence->ticket_id = $request->ticket_id;

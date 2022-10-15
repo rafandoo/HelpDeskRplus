@@ -52,6 +52,7 @@ Route::resource('user', UserController::class);
 
 /* Creating a route for the ticket controller. */
 Route::get('ticket/outstanding', [TicketController::class, 'outstanding'])->name('ticket.outstanding');
+Route::get('ticket/{id}/occurrences', [TicketController::class, 'occurrences'])->name('ticket.occurrences');
 Route::resource('ticket', TicketController::class, ['except' => ['show']]);
 
 /* Creating a route for the occurrences controller. */

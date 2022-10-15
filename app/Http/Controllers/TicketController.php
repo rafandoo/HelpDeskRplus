@@ -89,4 +89,11 @@ class TicketController extends Controller
         $ticket->delete();
         return redirect()->route('ticket.index')->with('success', 'Ticket excluído com sucesso!');
     }
+
+    public function occurrences($id)
+    {
+        $ticket = Ticket::find($id);
+        $occurrences = \App\Models\Occurrences::where('ticket_id', $id)->get()->toArray();
+        return response()->json($occurrences);
+    }
 }

@@ -43,7 +43,7 @@
     <div class="mb-3">
         <div class="input-group">
             <span class="input-group-text">Data</span>
-            <input class="bg-white form-control" id="created_at" name="created_at" type="date" readonly value="{{ date('Y-m-d') }}">
+            <input class="bg-white form-control" id="created_at" name="created_at" type="datetime" readonly value="{{ date('Y-m-d H:i:s') }}">
         </div>
     </div>
 </div>
@@ -51,7 +51,7 @@
     <div class="mb-3">
         <div class="input-group">
             <span class="input-group-text">Hora inicial</span>
-            <input class="bg-white form-control" id="initial_time" name="initial_time" readonly type="time" value="{{ date('H:i') }}">
+            <input class="bg-white form-control" id="initial_time" name="initial_time" readonly type="time" value="{{ date('H:i:s') }}">
         </div>
     </div>
 </div>
