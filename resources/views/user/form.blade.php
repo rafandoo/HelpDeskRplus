@@ -18,13 +18,13 @@
     <div class="col">
         <div class="mb-3"><label class="form-label" for="name">
             <strong>Nome</strong></label>
-            <input class="form-control" type="text" id="name" name="name" placeholder="John" required value="{{ isset($user) ? $user->nome : '' }}">
+            <input class="form-control" type="text" id="name" name="name" placeholder="John" required value="{{ isset($user) ? $user->name : '' }}">
         </div>
     </div>
     <div class="col">
         <div class="mb-3"><label class="form-label" for="last_name">
             <strong>Sobrenome</strong><br></label>
-            <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Doe" required value="{{ isset($user) ? $user->sobrenome : '' }}">
+            <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Doe" required value="{{ isset($user) ? $user->last_name : '' }}">
         </div>
     </div>
 </div>
