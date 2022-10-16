@@ -59,17 +59,6 @@ class OccurrencesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Occurrences  $occurrences
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Occurrences $occurrences)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Occurrences  $occurrences
