@@ -89,7 +89,7 @@ class SectorController extends Controller
      * 
      * @param id The id of the sector
      * 
-     * @return An array of users that belong to a specific sector.
+     * @return users An array of users that belong to a specific sector.
      */
     public function users($id)
     {
