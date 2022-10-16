@@ -50,6 +50,9 @@ class OccurrencesController extends Controller
 
         $ticket = Ticket::find($request->ticket_id);
         $ticket->status_id = $request->status_id;
+        if ($request->status_id == 4) {
+            $ticket->closed_at = date('Y-m-d H:i:s');
+        }
         $ticket->save();
         
         return redirect()->route('occurrences.index', $occurrence->ticket_id);

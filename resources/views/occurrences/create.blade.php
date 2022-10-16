@@ -16,24 +16,24 @@
 @endsection
 
 @section('content')
-<h3 class="text-dark mb-4">Trâmites</h3>
-<div class="row mb-3">
-    <div class="col-11 col-xl-12 col-xxl-11 offset-xl-0">
-        <div class="row">
-            <div class="col-xl-11 col-xxl-9">
-                <div class="card shadow mb-3">
-                    <div class="card-body">
-                        <form method="post" action="{{ route('occurrences.store') }}">
-                            @csrf
-                            @method('POST')
-                            @include('occurrences.form')
-                        </form>
+    <h3 class="text-dark mb-4">Trâmites</h3>
+    <div class="row mb-3">
+        <div class="col-11 col-xl-12 col-xxl-11 offset-xl-0">
+            <div class="row">
+                <div class="col-xl-11 col-xxl-9">
+                    <div class="card shadow mb-3">
+                        <div class="card-body">
+                            <form method="post" action="{{ route('occurrences.store') }}">
+                                @csrf
+                                @method('POST')
+                                @include('occurrences.form')
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @section('scripts')
