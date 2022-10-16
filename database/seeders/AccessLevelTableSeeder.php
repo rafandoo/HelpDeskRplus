@@ -17,15 +17,15 @@ class AccessLevelTableSeeder extends Seeder
         $accessLevels = [
             [
                 'id' => 1,
-                'description' => 'Cliente'
+                'name' => 'Cliente'
             ],
             [
                 'id' => 2,
-                'description' => 'Usuário'
+                'name' => 'Usuário'
             ],
             [
                 'id' => 3,
-                'description' => 'Administrador'
+                'name' => 'Administrador'
             ]
         ];
 

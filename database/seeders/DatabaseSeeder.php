@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             'Database\Seeders\PriorityTableSeeder',
             'Database\Seeders\StatusTableSeeder',
+            'Database\Seeders\AccessLevelTableSeeder',
+            'Database\Seeders\StateTableSeeder',
         ]);
 
         //$this->command->info('Priorities table seeded!');
