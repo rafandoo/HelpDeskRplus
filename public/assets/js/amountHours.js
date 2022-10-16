@@ -1,9 +1,9 @@
 /* A JavaScript function that is executed when the page is loaded. It is used to calculate the amount
 of hours worked on a ticket. */
 $(document).ready(function() {
-    var ticket = $('#id').val();
-    var url = "/ticket/" + ticket + "/occurrences";
-    var amountHours = 0;
+    let ticket = $('#id').val();
+    let url = "/ticket/" + ticket + "/occurrences";
+    let amountHours = 0;
     $.get(url, function(data){
         $.each(data, function(i, occurrence){
             hours = moment(occurrence.final_time, "HH:mm").diff(moment(occurrence.initial_time, "HH:mm"));
