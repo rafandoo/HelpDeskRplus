@@ -14,7 +14,8 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        $status = Status::all();
+        return response()->json($status);
     }
 
     /**
@@ -23,8 +24,9 @@ class StatusController extends Controller
      * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function show(Status $status)
+    public function show($id)
     {
-        //
+        $status = Status::findOrFail($id);
+        return response()->json($status);
     }
 }
