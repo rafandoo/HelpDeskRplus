@@ -177,7 +177,7 @@
                             <td>{{ $ticket->updated_at }}</td>
                             <td class="text-nowrap text-end align-middle">
                                 <!--<php if ($_SESSION['nivelAcesso'] != 3) echo "onclick='alertSemPermissao()'"; else echo "onclick='confirmExclusao($url)'";>-->
-                                <a class="btn btn-outline-info border rounded-circle" role="button" href="{{ route('ticket.edit', $ticket->id) }}" style="border-radius: 30px; margin-right: 10px;"><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-outline-info border rounded-circle" role="button" href="{{ route('ticket.edit', $ticket->id) }}" style="border-radius: 30px; margin-right: 10px; width: 40px;"><i class="fas fa-eye"></i></a>
                                 <form action="{{ route('ticket.destroy', $ticket->id) }}" method="POST" style="display: inline-block;"> 
                                     @method('DELETE')
                                     @csrf

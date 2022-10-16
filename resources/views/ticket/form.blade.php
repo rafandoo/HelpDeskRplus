@@ -25,7 +25,7 @@
             <div class="input-group"><span class="input-group-text">Cliente</span>
                 <input class="bg-white form-control" type="text" id="client" readonly required name="client" value="{{ isset($ticket) ? $ticket->client->name : '' }}">
                 <input type="hidden" id="client_id" name="client_id" value="{{ isset($ticket) ? $ticket->client_id : '' }}">
-                <button class="btn btn-primary" type="button" data-bs-target="#searchClient" data-bs-toggle="modal">
+                <button class="btn btn-primary" type="button" data-bs-target="#searchClient" data-bs-toggle="modal" style="border-radius: 0.35rem; border-top-left-radius: 0; border-bottom-left-radius: 0;">
                     <i class="fas fa-search"></i>
                 </button>
                 <div class="modal fade input-group-text" role="dialog" tabindex="-1" id="searchClient" name="searchClient" style="padding-top: 0px;background: rgba(234,236,244,0);">
