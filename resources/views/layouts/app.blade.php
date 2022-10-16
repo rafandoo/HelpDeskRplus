@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bg-gradient.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Clients-UI.css') }}">
     <title>@yield('title')</title>
-    
 </head>
 <body id="page-top">
     <div id="wrapper">
