@@ -14,7 +14,8 @@ class StateController extends Controller
      */
     public function index()
     {
-        //
+        $states = State::all();
+        return response()->json($states);
     }
 
     /**
@@ -23,8 +24,9 @@ class StateController extends Controller
      * @param  \App\Models\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function show(State $state)
+    public function show($id)
     {
-        //
+        $state = State::findOrFail($id);
+        return response()->json($state);
     }
 }
