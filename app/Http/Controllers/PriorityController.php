@@ -14,7 +14,8 @@ class PriorityController extends Controller
      */
     public function index()
     {
-        //
+        $priorities = Priority::all();
+        return response()->json($priorities);
     }
 
     /**
@@ -23,8 +24,9 @@ class PriorityController extends Controller
      * @param  \App\Models\Priority  $priority
      * @return \Illuminate\Http\Response
      */
-    public function show(Priority $priority)
+    public function show($id)
     {
-        //
+        $priority = Priority::findOrFail($id);
+        return response()->json($priority);
     }
 }
