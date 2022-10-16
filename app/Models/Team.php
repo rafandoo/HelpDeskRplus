@@ -9,6 +9,7 @@ class Team extends Model
 {
     use HasFactory;
 
+    /* A security feature that prevents mass assignment. */
     protected $fillable = [
         'user_id',
         'sector_id',
