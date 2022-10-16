@@ -14,7 +14,8 @@ class AccessLevelController extends Controller
      */
     public function index()
     {
-        //
+        $accessLevels = AccessLevel::all();
+        return response()->json($accessLevels);
     }
 
     /**
@@ -25,6 +26,7 @@ class AccessLevelController extends Controller
      */
     public function show($id)
     {
-        //
+        $accessLevel = AccessLevel::findOrFail($id);
+        return response()->json($accessLevel);
     }
 }
