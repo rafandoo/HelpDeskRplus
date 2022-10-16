@@ -12,19 +12,16 @@ class ServiceOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function direct($ticket_id)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        if (serviceOrder::where('ticket_id', $ticket_id)->exists()) {
+            $serviceOrder = serviceOrder::where('ticket_id', $ticket_id)->first();
+            return view('serviceOrder.edit', compact('serviceOrder'));
+        } else {
+            $serviceOrder = new serviceOrder();
+            $serviceOrder->ticket_id = $ticket_id;
+            return view('serviceOrder.create', compact('serviceOrder'));
+        }
     }
 
     /**
@@ -35,29 +32,8 @@ class ServiceOrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\serviceOrder  $serviceOrder
-     * @return \Illuminate\Http\Response
-     */
-    public function show(serviceOrder $serviceOrder)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\serviceOrder  $serviceOrder
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(serviceOrder $serviceOrder)
-    {
-        //
+        ServiceOrder::create($request->all());
+        return redirect()->route('ticket.edit', $request->ticket_id)->with('success', 'Ordem de serviço cadastrada com sucesso!');
     }
 
     /**
@@ -67,19 +43,10 @@ class ServiceOrderController extends Controller
      * @param  \App\Models\serviceOrder  $serviceOrder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, serviceOrder $serviceOrder)
+    public function update(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\serviceOrder  $serviceOrder
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(serviceOrder $serviceOrder)
-    {
-        //
+        $serviceOrder = serviceOrder::findOrFail($id);
+        $serviceOrder->update($request->all());
+        return redirect()->route('ticket.edit', $request->ticket_id)->with('success', 'Ordem de serviço atualizada com sucesso!');
     }
 }

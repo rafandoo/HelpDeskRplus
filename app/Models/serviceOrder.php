@@ -11,7 +11,8 @@ class serviceOrder extends Model
 
     protected $fillable = [
         'value',
-        'ticket_id'
+        'ticket_id',
+        'description'
     ];
 
     public function ticket()

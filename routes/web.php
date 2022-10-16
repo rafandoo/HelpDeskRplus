@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\OccurrencesController;
+use App\Http\Controllers\ServiceOrderController;
 
 
 /*
@@ -59,5 +60,9 @@ Route::resource('ticket', TicketController::class, ['except' => ['show']]);
 Route::get('occurrences/{id}', [OccurrencesController::class, 'index'])->name('occurrences.index');
 Route::get('occurrences/{id}/create', [OccurrencesController::class, 'create'])->name('occurrences.create');
 Route::post('occurrences/store', [OccurrencesController::class, 'store'])->name('occurrences.store');
+
+Route::get('serviceOrder/{id}', [ServiceOrderController::class, 'direct'])->name('serviceOrder.direct');
+Route::post('serviceOrder/store', [ServiceOrderController::class, 'store'])->name('serviceOrder.store');
+Route::put('serviceOrder/update/{id}', [ServiceOrderController::class, 'update'])->name('serviceOrder.update');
 
 Route::get('city/{state}/state', [CityController::class, 'showState'])->name('city.showState');

@@ -29,9 +29,8 @@
                                     <p class="fs-5 text-primary m-0 fw-bold">Informações do chamado</p>
                                 </div>
                                 <div class="col text-end">
-                                    <!--onclick="validaTicket('listaTramites.php?idTicket=')"-->
-                                    <a class="btn btn-primary" role="button" style="margin-right: 10px;">Ordem de Serviço</a>
-                                    <a class="btn btn-primary" role="button" onclick="alert('Você precisa salvar o chamado antes de incluir trâmites!')">Trâmite</a>
+                                    <a class="btn btn-primary" role="button" onclick="alert('Você precisa salvar o chamado antes de incluir uma OS!');" style="margin-right: 10px;">Ordem de Serviço</a>
+                                    <a class="btn btn-primary" role="button" onclick="alert('Você precisa salvar o chamado antes de incluir trâmites!');">Trâmite</a>
                                 </div>
                             </div>
                         </div>
