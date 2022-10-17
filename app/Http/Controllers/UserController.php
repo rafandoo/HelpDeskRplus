@@ -20,11 +20,10 @@ class UserController extends Controller
         if ($search) {
             $users = User::where($filter, 'like', '%' . $search . '%')
                 ->where('access_level', '!=', 1)
-                ->get();
+                ->paginate(10);
         } else {
             $users = User::where('access_level', '!=', 1)
-                //->paginate(10);
-                ->get();
+                ->paginate(10);
         }
         return view('user.index', compact('users'));
     }
