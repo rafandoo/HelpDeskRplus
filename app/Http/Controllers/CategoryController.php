@@ -14,7 +14,14 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $search = request('search');
+        if ($search) {
+            $categories = Category::where([
+                ['description', 'like', '%' . $search . '%']
+            ])->paginate(10);
+        } else {
+            $categories = Category::paginate(10);
+        }
         return view('category.index', compact('categories'));
     }
 
