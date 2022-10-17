@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             'Database\Seeders\StatusTableSeeder',
             'Database\Seeders\AccessLevelTableSeeder',
             'Database\Seeders\StateTableSeeder',
+            'Database\Seeders\CityTableSeeder'
         ]);
 
         //$this->command->info('Priorities table seeded!');
