@@ -15,7 +15,7 @@
         <h3 class="text-dark mb-0">Home&nbsp;</h3>
     </div>
     <div class="row">
-        <div class="col-md-6 col-xl-3 mb-4"><a href="filaPendentes.php" style="text-decoration: none;">
+        <div class="col-md-6 col-xl-3 mb-4"><a style="text-decoration: none;" href="{{ route('ticket.outstanding') }}" >
                 <div class="card shadow border-start-primary py-2">
                     <div class="card-body">
                         <div class="row align-items-center no-gutters">
