@@ -15,7 +15,14 @@ class SectorController extends Controller
      */
     public function index()
     {
-        $sectors = Sector::paginate(10);
+        $search = request('search');
+        if ($search) {
+            $sectors = Sector::where([
+                ['description', 'like', '%' . $search . '%']
+            ])->paginate(10);
+        } else {
+            $sectors = Sector::paginate(10);
+        }
         return view('sector.index', compact('sectors'));
     }
 

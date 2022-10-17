@@ -17,11 +17,11 @@
             <div class="row">
                 <div class="col">
                     <div id="dataTable_filter" class="dataTables_filter">
-                        <form method="post">
+                        <form method="get">
                             <div class="d-flex">
                                 <div>
                                     <div class="input-group" style="width: 270px;">
-                                    <input class="form-control form-control-sm" type="search" id="procurar" aria-controls="dataTable" placeholder="Buscar descrição" name="procurar" value="">
+                                    <input class="form-control form-control-sm" type="search" id="search" aria-controls="dataTable" placeholder="Buscar descrição" name="search" value="">
                                     <button class="btn btn-primary" type="submit">
                                         <i class="fas fa-search"></i>
                                     </button>
