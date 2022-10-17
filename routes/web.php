@@ -23,11 +23,8 @@ use App\Http\Controllers\ServiceOrderController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 /* Creating a route for the home controller. */
+Route::get('/' , [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 /* Creating a route for the category controller. */
