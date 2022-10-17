@@ -21,7 +21,7 @@
                             <div class="d-flex">
                                 <div>
                                     <div class="input-group" style="width: 270px;">
-                                    <input class="form-control form-control-sm" type="search" id="search" aria-controls="dataTable" placeholder="Buscar descrição" name="search" value="">
+                                    <input class="form-control form-control-sm" type="search" id="search" aria-controls="dataTable" placeholder="Buscar descrição" name="search" value="{{ isset($_GET['search']) ? $_GET['search'] : '' }}">
                                     <button class="btn btn-primary" type="submit">
                                         <i class="fas fa-search"></i>
                                     </button>
