@@ -21,7 +21,7 @@
                             <form method="post" action="{{ route('sector.update', $sector->id) }}">
                                 @csrf
                                 @method('PUT')
-                                @include('layouts.formDescAct', ['object' => $sector])
+                                @include('sector.form', ['sector' => $sector])
                             </form>
                         </div>
                     </div>
@@ -29,4 +29,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('assets/js/addUsers.js') }}"></script>
 @endsection

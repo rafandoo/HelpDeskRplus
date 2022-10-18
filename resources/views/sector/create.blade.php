@@ -21,7 +21,7 @@
                             <form method="post" action="{{ route('sector.store') }}">
                                 @csrf
                                 @method('POST')
-                                @include('layouts.formDescAct')
+                                @include('sector.form')
                             </form>
                         </div>
                     </div>
@@ -29,4 +29,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('assets/js/addUsers.js') }}"></script>
 @endsection

@@ -34,6 +34,9 @@ Route::resource('category', CategoryController::class, ['except' => ['show', 'de
 /* Creating a route for the sector controller. */
 Route::get('sector/{id}/active', [SectorController::class, 'active'])->name('sector.active');
 Route::get('sector/{id}/users', [SectorController::class, 'users'])->name('sector.users');
+Route::post('sector/team', [SectorController::class, 'storeTeam'])->name('sector.team');
+Route::delete('sector/team/{sector_id}/{user_id}', [SectorController::class, 'deleteTeam'])->name('sector.team.delete');
+Route::put('sector/team/{sector_id}/{user_id}', [SectorController::class, 'updateTeam'])->name('sector.team.update');
 Route::resource('sector', SectorController::class, ['except' => ['show', 'destroy']]);
 
 /* Creating a route for the client controller. */
@@ -58,8 +61,10 @@ Route::get('occurrences/{id}', [OccurrencesController::class, 'index'])->name('o
 Route::get('occurrences/{id}/create', [OccurrencesController::class, 'create'])->name('occurrences.create');
 Route::post('occurrences/store', [OccurrencesController::class, 'store'])->name('occurrences.store');
 
+/* Creating a route for the serviceOrder controller. */
 Route::get('serviceOrder/{id}', [ServiceOrderController::class, 'direct'])->name('serviceOrder.direct');
 Route::post('serviceOrder/store', [ServiceOrderController::class, 'store'])->name('serviceOrder.store');
 Route::put('serviceOrder/update/{id}', [ServiceOrderController::class, 'update'])->name('serviceOrder.update');
 
 Route::get('city/{state}/state', [CityController::class, 'showState'])->name('city.showState');
+

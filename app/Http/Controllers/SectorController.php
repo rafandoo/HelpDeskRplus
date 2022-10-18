@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sector;
-
+use App\Models\Team;
 use Illuminate\Http\Request;
+use Psy\Command\WhereamiCommand;
 
 class SectorController extends Controller
 {
@@ -44,8 +45,8 @@ class SectorController extends Controller
      */
     public function store(Request $request)
     {
-        Sector::create($request->all());
-        return redirect()->route('sector.index')->with('success', 'Setor cadastrado com sucesso!');
+        $sector = Sector::create($request->all());
+        return redirect()->route('sector.edit', $sector->id)->with('success', 'Setor cadastrado com sucesso!');
     }
 
     /**
@@ -109,5 +110,23 @@ class SectorController extends Controller
                 ->toArray());
         }
         return response()->json($users);
+    }
+
+    public function storeTeam(Request $request)
+    {
+        $team = Team::create($request->all());
+        return response()->json($team);
+    }
+
+    public function deleteTeam($sector_id, $user_id) 
+    {
+        Team::where('sector_id', $sector_id)->where('user_id', $user_id)->delete();
+        return response('True', 200);
+    }
+
+    public function updateTeam(Request $request, $sector_id, $user_id)
+    {
+        Team::where('sector_id', $sector_id)->where('user_id', $user_id)->update($request->all());
+        return response('True', 200);
     }
 }
