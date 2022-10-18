@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('sector_id')->constrained('sectors');
                 //->onUpdate('cascade')
                 //->onDelete('cascade');
-            $table->boolean('administrator')->default(false);
+            $table->boolean('admin')->default(false);
             $table->primary(['user_id', 'sector_id']);
             $table->timestamps();
         });
