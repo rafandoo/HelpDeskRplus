@@ -28,7 +28,7 @@
                                 </div>
                                 <div>
                                     <div class="input-group" style="width: 270px;">
-                                        <input class="form-control form-control-sm" type="search" id="search" name="search" aria-controls="dataTable" placeholder="Buscar">
+                                        <input class="form-control form-control-sm" type="search" id="search" name="search" aria-controls="dataTable" placeholder="Buscar" value="{{ isset($_GET['search']) ? $_GET['search'] : '' }}">
                                         <button class="btn btn-primary" type="submit">
                                             <i class="fas fa-search"></i>
                                         </button>
