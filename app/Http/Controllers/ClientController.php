@@ -22,8 +22,7 @@ class ClientController extends Controller
         if ($search) {
             $clients = Client::where($filter, 'like', '%' . $search . '%')->paginate(10);
         } else {
-            //$clients = Client::paginate(10);
-            $clients = Client::all();
+            $clients = Client::paginate(10);
         }
         return view('client.index', compact('clients'));
     }

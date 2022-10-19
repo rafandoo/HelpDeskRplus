@@ -18,7 +18,6 @@
                 <div class="col">
                     <div id="dataTable_filter-1" class="dataTables_filter">
                         <form method="get">
-                            @method('GET')
                             <div class="d-flex">
                                 <div style="margin-right: 20px;">
                                     <select class="form-select" id="filter" style="width: 145px;" name="filter">
@@ -82,18 +81,30 @@
                     </tfoot>
                 </table>
             </div>
-            <div class="row" hidden>
+            <div class="row">
                 <div class="col-md-6 align-self-center">
-                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando de 1 a 10 de 27</p>
+                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando de 1 a {{ $clients->count() }} de {{ $clients->total() }} registros</p>
                 </div>
                 <div class="col-md-6">
                     <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
                         <ul class="pagination">
-                            <li class="page-item disabled"><a class="page-link" aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+                            @if($clients->currentPage() == 1)
+                                <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                            @else
+                                <li class="page-item"><a class="page-link" href="{{ $clients->previousPageUrl() }}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                            @endif
+                            @for ($i = 1; $i <= $clients->lastPage(); $i++)
+                                @if($clients->currentPage() == $i)
+                                    <li class="page-item active"><a class="page-link" href="#">{{ $i }}</a></li>
+                                @else
+                                    <li class="page-item"><a class="page-link" href="{{ $clients->url($i) }}">{{ $i }}</a></li>
+                                @endif
+                            @endfor
+                            @if($clients->currentPage() == $clients->lastPage())
+                                <li class="page-item disabled"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                            @else
+                                <li class="page-item"><a class="page-link" href="{{ $clients->nextPageUrl() }}" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                            @endif
                         </ul>
                     </nav>
                 </div>
