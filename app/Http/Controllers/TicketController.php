@@ -14,7 +14,33 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::paginate(10);
+        $priority_filter = request('priority_filter');
+        $status_filter = request('status_filter');
+        $category_filter = request('category_filter');
+        $user_filter = request('user_filter');
+        $client_filter = request('client_filter');
+        $sector_filter = request('sector_filter');
+
+        $tickets = Ticket::orderBy('id', 'desc')
+            ->when($priority_filter, function ($query, $priority_filter) {
+                return $query->where('priority_id', $priority_filter);
+            })
+            ->when($status_filter, function ($query, $status_filter) {
+                return $query->where('status_id', $status_filter);
+            })
+            ->when($category_filter, function ($query, $category_filter) {
+                return $query->where('category_id', $category_filter);
+            })
+            ->when($user_filter, function ($query, $user_filter) {
+                return $query->where('user_id', $user_filter);
+            })
+            ->when($client_filter, function ($query, $client_filter) {
+                return $query->where('client_id', $client_filter);
+            })
+            ->when($sector_filter, function ($query, $sector_filter) {
+                return $query->where('sector_id', $sector_filter);
+            })
+            ->paginate(10);
         return view('ticket.index', compact('tickets'));
     }
 

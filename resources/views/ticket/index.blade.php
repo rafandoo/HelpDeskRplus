@@ -26,7 +26,7 @@
                                             $priorities = App\Models\Priority::all();
                                         @endphp
                                         @foreach ($priorities as $priority)
-                                            <option value="{{ $priority->id }}" {{ isset($priority_filter) && $priority_filter == $priority->id ? 'selected' : '' }}>{{ $priority->description }}</option>
+                                            <option value="{{ $priority->id }}" {{ isset($_GET['priority_filter']) && $_GET['priority_filter'] == $priority->id ? 'selected' : '' }}>{{ $priority->description }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -39,7 +39,7 @@
                                             $statuses = App\Models\Status::all();
                                         @endphp
                                         @foreach ($statuses as $status)
-                                            <option value="{{ $status->id }}" {{ isset($status_filter) && $status_filter == $status->id ? 'selected' : '' }}>{{ $status->description }}</option>
+                                            <option value="{{ $status->id }}" {{ isset($_GET['status_filter']) && $_GET['status_filter'] == $status->id ? 'selected' : '' }}>{{ $status->description }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -56,7 +56,7 @@
                                             $categories = App\Models\Category::all();
                                         @endphp
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}" {{ isset($category_filter) && $category_filter == $category->id ? 'selected' : '' }}>{{ $category->description }}</option>
+                                            <option value="{{ $category->id }}" {{ isset($_GET['category_filter']) && $_GET['category_filter'] == $category->id ? 'selected' : '' }}>{{ $category->description }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -66,10 +66,10 @@
                                     <select class="form-select" id="user_filter" name="user_filter" style="margin-right: 10px;">
                                         <option value="0">Selecione uma opção</option>
                                         @php 
-                                            $users = App\Models\User::all();
+                                            $users = App\Models\User::where('access_level', '>', 1)->get();
                                         @endphp
                                         @foreach ($users as $user)
-                                            <option value="{{ $user->id }}" {{ isset($user_filter) && $user_filter == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                            <option value="{{ $user->id }}" {{ isset($_GET['user_filter']) && $_GET['user_filter'] == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -80,8 +80,8 @@
                         <div id="dataTableFilter3" class="dataTables_filter">
                             <div style="margin-bottom: 15px;">
                                 <div class="input-group"><span class="input-group-text">Cliente</span>
-                                    <input class="bg-white form-control" type="text" id="client" name="client" readonly>
-                                    <input type="hidden" name="client_id" id="client_id" value="">
+                                    <input class="bg-white form-control" type="text" id="client" name="client" readonly value="{{ isset($_GET['client']) ? $_GET['client'] : '' }}">
+                                    <input type="hidden" name="client_filter" id="client_filter" value="{{ isset($_GET['client_filter']) ? $_GET['client_filter'] : '' }}">
                                     <button class="btn btn-primary" type="button" data-bs-target="#searchClient" data-bs-toggle="modal"><i class="fas fa-search"></i></button>
                                 </div>
                             </div>
@@ -131,7 +131,7 @@
                                             $sectors = App\Models\Sector::all();
                                         @endphp
                                         @foreach ($sectors as $sector)
-                                            <option value="{{ $sector->id }}" {{ isset($sector_filter) && $sector_filter == $sector->id ? 'selected' : '' }}>{{ $sector->description }}</option>
+                                            <option value="{{ $sector->id }}" {{ isset($_GET['sector_filter']) && $_GET['sector_filter'] == $sector->id ? 'selected' : '' }}>{{ $sector->description }}</option>
                                         @endforeach
                                     </select>
                                 </div>
