@@ -24,9 +24,6 @@ $('#addUser').click(function(){
             data: {
                 sector_id: sector_id,
                 user_id: user_id
-            },
-            success: function(data) {
-                alert('Usuario adicionado com sucesso');
             }
         });
     }
