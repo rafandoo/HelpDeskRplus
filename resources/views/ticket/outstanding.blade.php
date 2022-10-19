@@ -55,16 +55,28 @@
             </div>
             <div class="row">
                 <div class="col-md-6 align-self-center">
-                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando de 1 a 10 de 2</p>
+                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando de 1 a {{ $tickets->count() }} de {{ $tickets->total() }} registros</p>
                 </div>
                 <div class="col-md-6">
                     <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
                         <ul class="pagination">
-                            <li class="page-item disabled"><a class="page-link" aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+                            @if ($tickets->currentPage() == 1)
+                                <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                            @else
+                                <li class="page-item"><a class="page-link" href="{{ $tickets->previousPageUrl() }}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                            @endif
+                            @for ($i = 1; $i <= $tickets->lastPage(); $i++)
+                                @if ($tickets->currentPage() == $i)
+                                    <li class="page-item active"><a class="page-link" href="#">{{ $i }}</a></li>
+                                @else
+                                    <li class="page-item"><a class="page-link" href="{{ $tickets->url($i) }}">{{ $i }}</a></li>
+                                @endif
+                            @endfor
+                            @if ($tickets->currentPage() == $tickets->lastPage())
+                                <li class="page-item disabled"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                            @else
+                                <li class="page-item"><a class="page-link" href="{{ $tickets->nextPageUrl() }}" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                            @endif
                         </ul>
                     </nav>
                 </div>

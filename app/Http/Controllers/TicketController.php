@@ -14,7 +14,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::all();
+        $tickets = Ticket::paginate(10);
         return view('ticket.index', compact('tickets'));
     }
 
@@ -73,7 +73,7 @@ class TicketController extends Controller
      */
     public function outstanding()
     {
-        $tickets = Ticket::where('status_id', 1)->get();
+        $tickets = Ticket::where('status_id', 1)->paginate(10);
         return view('ticket.outstanding', compact('tickets'));
     }
 
