@@ -36,7 +36,7 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
     <script src="{{ asset('assets/js/summernote-bs5.min.js') }}"></script>
     <script src="{{ asset('assets/js/summernote.js') }}"></script>
     <script language="javascript" type="text/javascript">
@@ -61,4 +61,4 @@
             $('#btnSave').removeAttr('disabled');
         });
     </script>
-@endsection
+@endpush

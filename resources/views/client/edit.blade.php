@@ -34,7 +34,7 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
     <script src="{{ asset('assets/js/searchCities.js') }}"></script>
     <script src="{{ asset('assets/js/validation.js') }}"></script>
-@endsection
+@endpush

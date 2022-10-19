@@ -226,6 +226,6 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
     <script src="{{ asset('assets/js/searchClients.js') }}"></script>
-@endsection
+@endpush

@@ -31,6 +31,6 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
     <script src="{{ asset('assets/js/addUsers.js') }}"></script>
-@endsection
+@endpush

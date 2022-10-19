@@ -97,7 +97,7 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
     <script src="{{ asset('assets/js/amountHours.js') }}"></script>
-@endsection
+@endpush

@@ -41,6 +41,6 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
     <script src="{{ asset('assets/js/validation.js') }}"></script>
-@endsection
+@endpush
