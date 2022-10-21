@@ -52,19 +52,6 @@
 </div>
 <div class="row">
     <div class="col">
-        <div class="mb-3"><label class="form-label" for="sector"><strong>Setor</strong><br></label>
-            <select class="form-select" id="sector" required name="sector">
-                <option value="0">Selecione um setor</option>
-                @php
-                    $sectors = App\Models\Sector::all();
-                @endphp
-                @foreach ($sectors as $sector)
-                    <option value="{{ $sector->id }}" {{ isset($user) && $user->sector_id == $sector->id ? 'selected' : '' }}>{{ $sector->description }}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-    <div class="col">
         <div class="mb-3"><label class="form-label" for="access_level"><strong>Nível&nbsp;de acesso</strong><br></label>
             <select class="form-select" id="access_level" required name="access_level">
                 <option value="0">Selecione um nível de acesso</option>
@@ -77,8 +64,6 @@
             </select>
         </div>
     </div>
-</div>
-<div class="row">
     <div class="col">
         <div class="mb-3"><label class="form-label" for="active"><strong>Situação</strong><br></label>
             <select class="form-select" id="active" required name="active">
@@ -86,9 +71,6 @@
                 <option value="0" {{ isset($client) && $client->active == 0 ? 'selected' : '' }}>Inativo</option>
             </select>
         </div>
-    </div>
-    <div class="col">
-        <div class="mb-3"></div>
     </div>
 </div>
 <div class="mb-3"><button class="btn btn-primary" type="submit">Salvar</button></div>
