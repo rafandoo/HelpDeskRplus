@@ -51,15 +51,17 @@
                     </tr>
                 </thead>
                 <tbody id="users">
-                    @php $teams = App\Models\Team::where('sector_id', $sector->id)->get(); @endphp
-                    @foreach ($teams as $team)
-                        <tr class="align-middle">
-                            <td>{{ $team->user_id }}</td>
-                            <td>{{ @App\Models\User::find($team->user_id)->name }}</td>
-                            <td class="text-center"><input type="checkbox" id="admin" {{ $team->admin == 1 ? 'checked' : '' }}></td>
-                            <td class="text-center"><a class="btn btn-outline-danger border rounded-circle" id="removeBtn" role="button" style="border-radius: 30px;border-width: 1px;"><i class="far fa-trash-alt"></i></a></td>
-                        </tr>
-                    @endforeach
+                    @isset($sector)
+                        @php $teams = App\Models\Team::where('sector_id', $sector->id)->get(); @endphp
+                        @foreach ($teams as $team)
+                            <tr class="align-middle">
+                                <td>{{ $team->user_id }}</td>
+                                <td>{{ @App\Models\User::find($team->user_id)->name }}</td>
+                                <td class="text-center"><input type="checkbox" id="admin" {{ $team->admin == 1 ? 'checked' : '' }}></td>
+                                <td class="text-center"><a class="btn btn-outline-danger border rounded-circle" id="removeBtn" role="button" style="border-radius: 30px;border-width: 1px;"><i class="far fa-trash-alt"></i></a></td>
+                            </tr>
+                        @endforeach
+                    @endisset
                 </tbody>
                 <tfoot>
                     <tr>
