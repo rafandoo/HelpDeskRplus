@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Sector;
 use App\Models\Team;
 use Illuminate\Http\Request;
-use Psy\Command\WhereamiCommand;
 
 class SectorController extends Controller
 {
@@ -112,21 +111,52 @@ class SectorController extends Controller
         return response()->json($users);
     }
 
+
+    /** 
+     * Include a user and a sector in the team table
+     * 
+     * @param request The request object
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function storeTeam(Request $request)
     {
-        $team = Team::create($request->all());
-        return response()->json($team);
+        if (Team::create($request->all())) {
+            return response()->json(['success' => true]);
+        } 
+        return response()->json(['success' => false]);
     }
 
+    /**
+     * > Delete a team from the database
+     * 
+     * @param sector_id The id of the sector you want to delete the team from.
+     * @param user_id The id of the user you want to delete from the team.
+     * 
+     * @return a JSON response.
+     */
     public function deleteTeam($sector_id, $user_id) 
     {
-        Team::where('sector_id', $sector_id)->where('user_id', $user_id)->delete();
-        return response('True', 200);
+        if (Team::where('sector_id', $sector_id)->where('user_id', $user_id)->delete()) {
+            return response()->json(['success' => true]);
+        }
+        return response()->json(['success' => false]);
     }
 
+/**
+ * > This function updates the admin status of a user in a sector
+ * 
+ * @param Request request The request object
+ * @param sector_id The id of the sector you want to update the team for.
+ * @param user_id The user id of the user you want to update
+ * 
+ * @return A JSON response.
+ */
     public function updateTeam(Request $request, $sector_id, $user_id)
     {
-        Team::where('sector_id', $sector_id)->where('user_id', $user_id)->update($request->all());
-        return response('True', 200);
+        if (Team::where('sector_id', $sector_id)->where('user_id', $user_id)->update(['admin' => $request->admin])) {
+            return response()->json(['success' => true]);
+        }
+        return response()->json(['success' => false]);
     }
 }

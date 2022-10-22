@@ -1,5 +1,6 @@
 /* Adding a new row to the table. */
 $('#addUser').click(function(){
+    var csrf = $('input[name="_token"]').val();
     var sector_id = $('#id').val();
     var user_id = $('#user_id').val();
     var user_name = $('#user_id option:selected').text();
@@ -23,7 +24,8 @@ $('#addUser').click(function(){
             type: 'POST',
             data: {
                 sector_id: sector_id,
-                user_id: user_id
+                user_id: user_id,
+                _token: csrf
             }
         });
     }
@@ -33,11 +35,15 @@ $('#addUser').click(function(){
 that event on an element. */
 $(document).on('click', '#removeBtn', function(){
     $(this).closest('tr').remove();
+    var csrf = $('input[name="_token"]').val();
     var sector_id = $('#id').val();
     var user_id = $(this).closest('tr').find('td:eq(0)').text();
     $.ajax({
         url: '/sector/team/'+sector_id+'/'+user_id,
         type: 'DELETE',
+        data: {
+            _token: csrf
+        },
         success: function(data) {
             alert('Usuario removido com sucesso');
         }
@@ -47,14 +53,16 @@ $(document).on('click', '#removeBtn', function(){
 /* A jQuery function that is used to bind an event handler to the "click" JavaScript event, or trigger
 that event on an element. */
 $(document).on('click', '#admin', function(){
+    var csrf = $('input[name="_token"]').val();
     var sector_id = $('#id').val();
     var user_id = $(this).closest('tr').find('td:eq(0)').text();
     var admin = $(this).is(':checked') ? 1 : 0;
     $.ajax({
         url: '/sector/team/'+sector_id+'/'+user_id,
-        type: 'PUT',
+        type: 'PATCH',
         data: {
-            admin: admin
+            admin: admin,
+            _token: csrf
         }
     });
 });

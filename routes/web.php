@@ -36,7 +36,7 @@ Route::get('sector/{id}/active', [SectorController::class, 'active'])->name('sec
 Route::get('sector/{id}/users', [SectorController::class, 'users'])->name('sector.users');
 Route::post('sector/team', [SectorController::class, 'storeTeam'])->name('sector.team');
 Route::delete('sector/team/{sector_id}/{user_id}', [SectorController::class, 'deleteTeam'])->name('sector.team.delete');
-Route::put('sector/team/{sector_id}/{user_id}', [SectorController::class, 'updateTeam'])->name('sector.team.update');
+Route::patch('sector/team/{sector_id}/{user_id}', [SectorController::class, 'updateTeam'])->name('sector.team.update');
 Route::resource('sector', SectorController::class, ['except' => ['show', 'destroy']]);
 
 /* Creating a route for the client controller. */
