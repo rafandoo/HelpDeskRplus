@@ -74,4 +74,3 @@ def searchZipCode(zip_code):
     except sqlite3.Error as e:
         print("Error: %s" % e)
         
-print(searchZipCode('89167653'))
