@@ -8,11 +8,8 @@ $("#zip_code").change(function() {
         return;
     } else {
         $.get(url, function(data){
-
             $("#state").val(data.state);
             selectCity(data.city);
-
-            
             $("#neighborhood").val(data.neighborhood);
             $("#street").val(data.street);
             $("#complement").val(data.complement);
