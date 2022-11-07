@@ -4,9 +4,9 @@ import conn
 
 app = FastAPI()
 
-@app.get("/cep/{cep}")
-def cep(cep: str):
-    result = conn.searchZipCode(cep)
+@app.get("/zipcode/{zip}")
+async def zip_code(zip: str):
+    result = conn.searchZipCode(zip)
     resultJson = {}
     if len(result) > 0:
         resultJson = {
@@ -24,4 +24,4 @@ def cep(cep: str):
     return resultJson
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=8000)
+    uvicorn.run(app, host="localhost", port=8001)
