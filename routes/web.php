@@ -67,4 +67,4 @@ Route::post('serviceOrder/store', [ServiceOrderController::class, 'store'])->nam
 Route::put('serviceOrder/update/{id}', [ServiceOrderController::class, 'update'])->name('serviceOrder.update');
 
 Route::get('city/{state}/state', [CityController::class, 'showState'])->name('city.showState');
-
+Route::get('city/{id}', [CityController::class, 'show'])->name('city.show');

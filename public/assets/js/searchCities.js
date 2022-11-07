@@ -12,3 +12,11 @@ $("#state").change(function(){
         });
     });
 });
+
+function selectCity(city_id) {
+    var url = "/city/" + city_id;
+    $.get(url, function(data){
+        $("#city_id").empty();
+        $("#city_id").append("<option value='"+data.id+"'>"+data.name+"</option>");
+    });
+}
