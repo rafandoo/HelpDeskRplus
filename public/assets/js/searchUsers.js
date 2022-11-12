@@ -3,8 +3,8 @@ value of the select and uses it to make an ajax request to the url /sector/{sect
 request is completed, it empties the select with id user_id and fills it with the data returned by
 the request. */
 $("#sector_id").change(function(){
-    var sector = $(this).val();
-    var url = "/sector/" + sector + "/users";
+    let sector = $(this).val();
+    let url = "/sector/" + sector + "/users";
     $.get(url, function(data){
         $("#user_id").empty();
         $.each(data, function(i, user){
