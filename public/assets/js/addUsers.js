@@ -6,7 +6,7 @@ $('#addUser').click(function(){
     let user_name = $('#user_id option:selected').text();
     let table = $('#users');
 
-    if (table.find('td:contains('+user_name+')').length != 0) {
+    if (table.find('td:contains('+user_name+')').length !== 0) {
         alert('Usuario já adicionado');
     } else if (sector_id === 0) {
         alert('Antes de adicionar um usuario, salve o setor');

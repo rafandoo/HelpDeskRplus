@@ -213,7 +213,7 @@ function validateCnpj(val) {
     let aux = false;
     
     for (let i = 1; cnpj.length > i; i++) { 
-        if (cnpj[i - 1] != cnpj[i]) {  
+        if (cnpj[i - 1] !== cnpj[i]) {  
             aux = true;   
         } 
     } 
