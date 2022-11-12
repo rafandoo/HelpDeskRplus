@@ -16,10 +16,15 @@ class ClientFactory extends Factory
      */
     public function definition()
     {
+        //faker locale pt_BR
+        $this->faker->addProvider(new \Faker\Provider\pt_BR\Person($this->faker));
+        $this->faker->addProvider(new \Faker\Provider\pt_BR\PhoneNumber($this->faker));
+        $this->faker->addProvider(new \Faker\Provider\pt_BR\Address($this->faker));
+        $this->faker->addProvider(new \Faker\Provider\pt_BR\Company($this->faker));
         return [
             'name' => $this->faker->name,
             'fantasy_name' => $this->faker->name,
-            'cpf_cnpj' => $this->faker->randomElement([$this->faker->cpf, $this->faker->cnpj]),
+            'cpf_cnpj' => $this->faker->randomElement([$this->faker->cpf(false), $this->faker->cnpj(false)]),
             'email' => $this->faker->unique()->safeEmail,
             'phone' => $this->faker->phoneNumber,
             'notes' => $this->faker->text,

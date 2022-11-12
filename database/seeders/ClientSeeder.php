@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Address;
 use App\Models\Client;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ClientSeeder extends Seeder
@@ -15,6 +15,7 @@ class ClientSeeder extends Seeder
      */
     public function run()
     {
-        Client::factory(10)->create();
+        Client::factory(1)->create();
+        Address::factory(1)->create();
     }
 }

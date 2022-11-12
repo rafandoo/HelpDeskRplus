@@ -17,7 +17,7 @@ class SectorFactory extends Factory
     public function definition()
     {
         return [
-            'description' => $this->faker->text,
+            'description' => $this->faker->word(),
             'active' => $this->faker->boolean,
             'created_at' => $this->faker->dateTime,
             'updated_at' => $this->faker->dateTime

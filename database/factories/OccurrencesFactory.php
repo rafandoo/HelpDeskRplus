@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class OccurrenceFactory extends Factory
+class OccurrencesFactory extends Factory
 {
     /**
      * Define the model's default state.

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('fantasy_name', 255)->nullable();
             $table->string('cpf_cnpj', 14)->unique();
             $table->string('email', 255)->unique();
-            $table->string('phone', 11)->nullable();
+            $table->string('phone', 15)->nullable();
             $table->longText('notes')->nullable();
             $table->boolean('active')->default(1);
             $table->timestamps();

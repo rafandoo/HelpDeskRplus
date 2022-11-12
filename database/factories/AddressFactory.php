@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Address;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,20 @@ class AddressFactory extends Factory
      */
     public function definition()
     {
-        $client = \App\Models\Client::inRandomOrder()->first();
+        //faker locale pt_BR
+        $this->faker->addProvider(new \Faker\Provider\pt_BR\Address($this->faker));
+        // cliente é unico para cada endereço e não pode ser repetido
+
+        try {
+            $client = \App\Models\Client::inRandomOrder()
+            ->whereNotIn('id', Address::all()->pluck('client_id'))
+            ->first();
+        } catch (\Throwable $th) {
+            $client = \App\Models\Client::inRandomOrder()->first();
+        }
+    
         $city = \App\Models\City::inRandomOrder()->first();
+
         return [
             'client_id' => $client->id,
             'street' => $this->faker->streetName,
