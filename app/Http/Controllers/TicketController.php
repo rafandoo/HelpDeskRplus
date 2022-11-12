@@ -116,6 +116,14 @@ class TicketController extends Controller
         return redirect()->route('ticket.index')->with('success', 'Ticket excluído com sucesso!');
     }
 
+    /**
+     * It returns a JSON response of all occurrences that have the same ticket_id as the id passed to the
+    * function
+    * 
+    * @param id The id of the ticket
+    * 
+    * @return An array of occurrences.
+    */
     public function occurrences($id)
     {
         $occurrences = \App\Models\Occurrences::where('ticket_id', $id)->get()->toArray();
