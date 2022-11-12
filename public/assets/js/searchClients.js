@@ -4,17 +4,13 @@ which is then parsed and appended to the table. */
 $('#searchButton').click(function() {
     let filter = document.getElementById('filter').value;
     let search = document.getElementById('search').value;
-    if (search.length == 0) search = 'all';
+    if (search.length === 0) search = 'all';
     let url = "/client/" + filter + "/" + search;
     $.get(url, function (data) {
         $("#clients").empty();
         $.each(data, function (i, client) {
-            if (client.active == 1) {
-                let active = "Ativo";
-            } else {
-                let active = "Inativo";
-            }
-            let row = ("<tr onclick=\'selectClient(" + client.id + ", \" " + client.name + " \") ' style='cursor: pointer;'><td>" + client.id + "</td><td>" + client.name + "</td><td>" + client.cpf_cnpj + "</td><td>" + active +"</td></tr>");
+            let active = client.active === 1 ? 'Ativo' : 'Inativo';
+            let row = ("<tr onclick=\'selectClient(" + client.id + ", \" " + client.name + " \") ' style='cursor: pointer;'><td>" + client.id + "</td><td>" + client.name + "</td><td>" + client.cpf_cnpj + "</td><td>" + active + "</td></tr>");
             $("#clients").append(row);
         });
     });

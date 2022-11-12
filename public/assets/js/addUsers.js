@@ -8,7 +8,7 @@ $('#addUser').click(function(){
 
     if (table.find('td:contains('+user_name+')').length != 0) {
         alert('Usuario já adicionado');
-    } else if (sector_id == 0) {
+    } else if (sector_id === 0) {
         alert('Antes de adicionar um usuario, salve o setor');
     } else { 
         let tr = $('<tr class=align-middle></tr>');

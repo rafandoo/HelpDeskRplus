@@ -8,7 +8,7 @@
 function validateLogin(input) {
     let url = "/user/" + input.value + "/login";
     $.get(url, function(data){
-        if (data == "True") {
+        if (data === "True") {
             $("#login").addClass("is-invalid");
             $("#login").removeClass("is-valid");
             $("#login").next().text("Login já cadastrado");
@@ -30,7 +30,7 @@ function validateLogin(input) {
 function validateEmail(input) {
     let url = "/user/" + input.value + "/email";
     $.get(url, function(data){
-        if (data == "True") {
+        if (data === "True") {
             $("#email").addClass("is-invalid");
             $("#email").removeClass("is-valid");
             $("#email").next().text("Email já cadastrado");
@@ -77,7 +77,7 @@ function validatePassword(input) {
  * @param input - The input element that is being validated.
  */
 function confirmPassword(input) {
-    if (input.value != $("#password").val()) {
+    if (input.value !== $("#password").val()) {
         $("#confirm_password").addClass("is-invalid");
         $("#confirm_password").removeClass("is-valid");
         $("#confirm_password").next().text("As senhas não conferem");
@@ -96,7 +96,7 @@ function confirmPassword(input) {
  * @param input - The input element that is being validated.
  */
 function validateCpfCnpj(input) {
-    if (input.value.length == 14) {
+    if (input.value.length === 14) {
         if (validateCpf(input.value)) {
             $("#cpfCnpj").addClass("is-valid");
             $("#cpfCnpj").removeClass("is-invalid");
@@ -108,7 +108,7 @@ function validateCpfCnpj(input) {
             $("#cpfCnpj").next().text("CPF inválido");
             input.setCustomValidity("CPF inválido");
         }
-    } else if (input.value.length == 18) {
+    } else if (input.value.length === 18) {
         if (validateCnpj(input.value)) {
             $("#cpfCnpj").addClass("is-valid");
             $("#cpfCnpj").removeClass("is-invalid");
@@ -124,7 +124,7 @@ function validateCpfCnpj(input) {
 
     let url = "/client/" + input.value + "/cpf-cnpj";
     $.get(url, function(data){
-        if (data == "True") {
+        if (data === "True") {
             $("#cpfCnpj").addClass("is-invalid");
             $("#cpfCnpj").removeClass("is-valid");
             $("#cpfCnpj").next().text("CPF/CNPJ já cadastrado");
@@ -155,12 +155,12 @@ function validateCpf(val) {
     let aux = false;
     
     for (let i = 1; cpf.length > i; i++) {
-        if (cpf[i - 1] != cpf[i]) {
+        if (cpf[i - 1] !== cpf[i]) {
             aux = true;   
         }
     } 
     
-    if (aux == false) {
+    if (aux === false) {
         return false; 
     } 
     
@@ -170,11 +170,11 @@ function validateCpf(val) {
     
     dv1 = ((dv1 * 10) % 11);
     
-    if (dv1 == 10) {
+    if (dv1 === 10) {
         dv1 = 0; 
     }
     
-    if (dv1 != cpf[9]) {
+    if (dv1 !== cpf[9]) {
         return false; 
     } 
     
@@ -184,11 +184,11 @@ function validateCpf(val) {
     
     dv2 = ((dv2 * 10) % 11);
     
-    if (dv2 == 10) {
+    if (dv2 === 10) {
         dv2 = 0; 
     }
     
-    if (dv2 != cpf[10]) {
+    if (dv2 !== cpf[10]) {
         return false; 
     } else {   
         return true; 
@@ -218,7 +218,7 @@ function validateCnpj(val) {
         } 
     } 
     
-    if (aux == false) {  
+    if (aux === false) {  
         return false; 
     }
     
@@ -238,7 +238,7 @@ function validateCnpj(val) {
         dv1 = (11 - dv1); 
     } 
     
-    if (dv1 != cnpj[12]) {  
+    if (dv1 !== cnpj[12]) {  
         return false; 
     } 
     
@@ -258,7 +258,7 @@ function validateCnpj(val) {
         dv2 = (11 - dv2); 
     } 
     
-    if (dv2 != cnpj[13]) {   
+    if (dv2 !== cnpj[13]) {   
         return false; 
     } else {  
         return true; 
