@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Team extends Model
+class Team extends Pivot
 {
-    use HasFactory;
+    protected $table = 'teams';
 
     /* A security feature that prevents mass assignment. */
     protected $fillable = [
@@ -15,4 +14,24 @@ class Team extends Model
         'sector_id',
         'administrator'
     ];
+
+    /**
+     * This function returns the sector that this company belongs to.
+     * 
+     * @return The sector() method returns the sector that the user belongs to.
+     */
+    public function sector()
+    {
+        return $this->belongsTo('App\Models\Sector');
+    }
+
+    /**
+     * This function returns the user that belongs to this post.
+     * 
+     * @return The user() method returns the user that owns the phone.
+     */
+    public function user()  
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }
