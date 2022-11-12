@@ -15,7 +15,7 @@ $('#addUser').click(function(){
         tr.append('<td id="user_id" value="'+user_id+'">'+user_id+'</td>');''
         tr.append('<td>'+user_name+'</td>');
         tr.append('<td class="text-center"><input type="checkbox" id="admin"></td>');
-        tr.append('<td class="text-center"><a class="btn btn-outline-danger border rounded-circle" id="removeBtn" role="button" style="border-radius: 30px;border-width: 1px;"><i class="far fa-trash-alt"></i></a></td>')
+        tr.append('<td class="text-center"><a class="btn btn-outline-danger border rounded-circle" id="removeBtn" role="button" style="border-radius: 30px;border-width: 1px;"><i class="far fa-trash-alt"></i></a></td>');
 
         table.append(tr);
         
@@ -34,20 +34,23 @@ $('#addUser').click(function(){
 /* A jQuery function that is used to bind an event handler to the "click" JavaScript event, or trigger
 that event on an element. */
 $(document).on('click', '#removeBtn', function(){
-    $(this).closest('tr').remove();
-    var csrf = $('input[name="_token"]').val();
-    var sector_id = $('#id').val();
-    var user_id = $(this).closest('tr').find('td:eq(0)').text();
-    $.ajax({
-        url: '/sector/team/'+sector_id+'/'+user_id,
-        type: 'DELETE',
-        data: {
-            _token: csrf
-        },
-        success: function(data) {
-            alert('Usuario removido com sucesso');
-        }
-    });
+    _confirm = confirm('Tem certeza que deseja remover o usuário?');
+    if (_confirm) {
+        $(this).closest('tr').remove();
+        var csrf = $('input[name="_token"]').val();
+        var sector_id = $('#id').val();
+        var user_id = $(this).closest('tr').find('td:eq(0)').text();
+        $.ajax({
+            url: '/sector/team/'+sector_id+'/'+user_id,
+            type: 'DELETE',
+            data: {
+                _token: csrf
+            },
+            success: function(data) {
+                alert('Usuario removido com sucesso');
+            }
+        });
+    }
 });
 
 /* A jQuery function that is used to bind an event handler to the "click" JavaScript event, or trigger
