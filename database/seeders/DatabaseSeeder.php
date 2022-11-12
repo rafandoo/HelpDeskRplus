@@ -14,14 +14,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // $this->call([
+        //     'Database\Seeders\PriorityTableSeeder',
+        //     'Database\Seeders\StatusTableSeeder',
+        //     'Database\Seeders\AccessLevelTableSeeder',
+        //     'Database\Seeders\StateTableSeeder',
+        //     'Database\Seeders\CityTableSeeder'
+        // ]);
+
         $this->call([
-            'Database\Seeders\PriorityTableSeeder',
-            'Database\Seeders\StatusTableSeeder',
-            'Database\Seeders\AccessLevelTableSeeder',
-            'Database\Seeders\StateTableSeeder',
-            'Database\Seeders\CityTableSeeder'
+            PrioritySeeder::class,
+            StatusSeeder::class,
+            AccessLevelSeeder::class,
+            StateSeeder::class,
+            CitySeeder::class,
+            SectorSeeder::class,
+            CategorySeeder::class,
+            ClientSeeder::class,
+            // AddressSeeder::class,
+            UserSeeder::class,
+            TeamSeeder::class,
+            TicketSeeder::class,
+            OccurrenceSeeder::class,
+            ServiceOrderSeeder::class,
         ]);
 
-        //$this->command->info('Priorities table seeded!');
+        $this->command->info('All tables seeded!');
     }
 }
