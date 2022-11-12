@@ -1,17 +1,17 @@
 /* Adding a new row to the table. */
 $('#addUser').click(function(){
-    var csrf = $('input[name="_token"]').val();
-    var sector_id = $('#id').val();
-    var user_id = $('#user_id').val();
-    var user_name = $('#user_id option:selected').text();
-    var table = $('#users');
+    let csrf = $('input[name="_token"]').val();
+    let sector_id = $('#id').val();
+    let user_id = $('#user_id').val();
+    let user_name = $('#user_id option:selected').text();
+    let table = $('#users');
 
     if (table.find('td:contains('+user_name+')').length != 0) {
         alert('Usuario já adicionado');
     } else if (sector_id == 0) {
         alert('Antes de adicionar um usuario, salve o setor');
     } else { 
-        var tr = $('<tr class=align-middle></tr>');
+        let tr = $('<tr class=align-middle></tr>');
         tr.append('<td id="user_id" value="'+user_id+'">'+user_id+'</td>');''
         tr.append('<td>'+user_name+'</td>');
         tr.append('<td class="text-center"><input type="checkbox" id="admin"></td>');
@@ -37,9 +37,9 @@ $(document).on('click', '#removeBtn', function(){
     _confirm = confirm('Tem certeza que deseja remover o usuário?');
     if (_confirm) {
         $(this).closest('tr').remove();
-        var csrf = $('input[name="_token"]').val();
-        var sector_id = $('#id').val();
-        var user_id = $(this).closest('tr').find('td:eq(0)').text();
+        let csrf = $('input[name="_token"]').val();
+        let sector_id = $('#id').val();
+        let user_id = $(this).closest('tr').find('td:eq(0)').text();
         $.ajax({
             url: '/sector/team/'+sector_id+'/'+user_id,
             type: 'DELETE',
@@ -56,10 +56,10 @@ $(document).on('click', '#removeBtn', function(){
 /* A jQuery function that is used to bind an event handler to the "click" JavaScript event, or trigger
 that event on an element. */
 $(document).on('click', '#admin', function(){
-    var csrf = $('input[name="_token"]').val();
-    var sector_id = $('#id').val();
-    var user_id = $(this).closest('tr').find('td:eq(0)').text();
-    var admin = $(this).is(':checked') ? 1 : 0;
+    let csrf = $('input[name="_token"]').val();
+    let sector_id = $('#id').val();
+    let user_id = $(this).closest('tr').find('td:eq(0)').text();
+    let admin = $(this).is(':checked') ? 1 : 0;
     $.ajax({
         url: '/sector/team/'+sector_id+'/'+user_id,
         type: 'PATCH',
