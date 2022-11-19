@@ -148,6 +148,15 @@ class ClientController extends Controller
         return redirect()->route('client.index')->with('success', 'Situação atualizado com sucesso!');
     }
 
+    /**
+     * It takes a filter and a search term, and returns a JSON response of all the clients that match the
+     * filter and search term
+     * 
+     * @param filter the column name to search
+     * @param search the search term
+     * 
+     * @return A JSON object containing all the clients.
+     */
     public function search($filter, $search)
     {
         if($search == 'all') {

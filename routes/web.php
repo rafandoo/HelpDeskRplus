@@ -36,8 +36,10 @@ Route::middleware(['auth'])->group(function() {
     Route::get('sector/{id}/users', [SectorController::class, 'users'])->name('sector.users');
     Route::post('sector/team', [SectorController::class, 'storeTeam'])->name('sector.team');
     Route::delete('sector/team/{sector_id}/{user_id}', [SectorController::class, 'deleteTeam'])->name('sector.team.delete');
-    Route::put('sector/team/{sector_id}/{user_id}', [SectorController::class, 'updateTeam'])->name('sector.team.update');
+    Route::patch('sector/team/{sector_id}/{user_id}', [SectorController::class, 'updateTeam'])->name('sector.team.update');
     Route::resource('sector', SectorController::class, ['except' => ['show', 'destroy']]);
+
+
 
     /* Creating a route for the client controller. */
     Route::get('client/{id}/active', [ClientController::class, 'active'])->name('client.active');
@@ -67,6 +69,7 @@ Route::middleware(['auth'])->group(function() {
     Route::put('serviceOrder/update/{id}', [ServiceOrderController::class, 'update'])->name('serviceOrder.update');
 
     Route::get('city/{state}/state', [CityController::class, 'showState'])->name('city.showState');
+    Route::get('city/{id}', [CityController::class, 'show'])->name('city.show');
 });
 
 require __DIR__.'/auth.php';
