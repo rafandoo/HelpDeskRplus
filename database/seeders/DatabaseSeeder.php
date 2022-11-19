@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             'Database\Seeders\default\PriorityTableSeeder',
             'Database\Seeders\default\StatusTableSeeder',
             'Database\Seeders\default\AccessLevelTableSeeder',
+            'Database\Seeders\default\AdmUserTableSeeder',
             'Database\Seeders\default\StateTableSeeder',
             'Database\Seeders\default\CityTableSeeder'
         ]);
