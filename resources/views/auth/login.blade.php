@@ -3,16 +3,15 @@
         <x-slot name="logo">
             <a href="/">
                 @include('layouts.logo')
-                <!-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> -->
             </a>
         </x-slot>
         <x-auth-session-status class="mb-4" :status="session('status')" />
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div>
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <x-input-label for="username" :value="__('Usuário')" />
+                <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus />
+                <x-input-error :messages="$errors->get('username')" class="mt-2" />
             </div>
             <div class="mt-4">
                 <x-input-label for="password" :value="__('Senha')" />
