@@ -20,6 +20,7 @@ The present Help Desk system project was developed for the WEB II Development co
   <img src="https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white"/>
   <img src="https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white"/>
   <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white"/>
 </p>
 
 ## Configuration ⚙️
@@ -29,10 +30,11 @@ The present Help Desk system project was developed for the WEB II Development co
 - PHP - v8.1.X.
 - MySQL - v10.4.22 or above.
 - Composer - v2.3.10 or above.
+- Python - v3.10.6 or above.
 
 ### Installation
 
-To run this project, you will need to install PHP, MySQL and Composer. 
+To run this project, you will need to install PHP, MySQL, Composer and Python. 
 Once installed, run the following steps:
 
 - Copy the .env.example and rename to .env.
@@ -51,9 +53,11 @@ Then run the following commands in the shell:
 It's necessary to create a database with the default configuration in advance, then run the following commands in the shell to create the tables and perform the inclusion of the initial data:
 
 ```shell
-   php artisan migrate
+   python start.py -m -s
 
-   php artisan db:seed
+   or
+
+   python start.py -ms
 ```
 
 ## How to execute ▶️
@@ -61,7 +65,7 @@ It's necessary to create a database with the default configuration in advance, t
 Execute the command below to run the project in your shell.
 
 ```shell
-   php artisan serve
+   python start.py
 ```
 
 ## Documents 📄
@@ -106,4 +110,3 @@ This project is not yet in its final version.
 The [MIT License](https://github.com/rafandoo/HelpDeskRplus/blob/f78ea11cbcc38ee4a13ce5be79aa4a35c34a2f01/LICENSE) (MIT)
 
 Copyright ©️ 2022 - Rafael Camargo
-
