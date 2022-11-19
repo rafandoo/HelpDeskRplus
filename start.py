@@ -1,7 +1,14 @@
 import threading
 from os import system
+import sys
 
-CMD = ['php artisan serve', 'python util\src\main.py']
+cmd = ['php artisan serve', 'python util\src\main.py']
+
+def params():
+    """
+    It gets the parameters passed to the script
+    """
+    return sys.argv[1:]
 
 def run(cmd):
     """
@@ -11,10 +18,21 @@ def run(cmd):
     """
     system(cmd)
 
-def main(cmd):
+def main(cmd, param):
     """
-    It creates a list of threads, each thread running a command in the list of commands
+    It takes two parameters, cmd and param.
+    
+    :param cmd: list of commands to run
+    :param param: list of parameters passed to the script
     """
+    if param == ['-m']:
+        run('php artisan migrate')
+    if param == ['-s']:
+        run('php artisan db:seed')
+    if param == ['-ms']:
+        run('php artisan migrate:fresh --seed')
+    if param == ['-r']:
+        run('php artisan migrate:fresh')
     threads = []
     for c in cmd:
         t = threading.Thread(target=run, args=(c,))
@@ -22,4 +40,17 @@ def main(cmd):
         t.start()
 
 if __name__ == '__main__':
-    main(CMD)
+    param = params()
+    if param == ['-help']:
+        print('''
+        This script runs multiple commands in parallel.
+        Usage: python start.py [command]
+        
+        Parameters:
+        -m: Runs the migration command
+        -s: Runs the seed command
+        -ms: Runs the migration and seed commands
+        -r: Resets the database
+        ''')
+        exit()
+    main(cmd, param)
