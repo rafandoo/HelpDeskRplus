@@ -1,35 +1,44 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @yield('styles')
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Nunito.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bg-gradient.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Clients-UI.css') }}">
+    <title>@yield('title')</title>
+</head>
+<body id="page-top">
+    <div id="wrapper">
+        @yield('sideNav')
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content"> 
+                @yield('topNav')
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright">
+                        <a href="https://github.com/rafandoo" style="color: #000000;">
+                            <span style="color: rgb(133,135,150);font-weight: bold;">
+                                <br>Copyright © Rafael Camargo 2022<br><br>
+                            </span>
+                        </a>
                     </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+                </div>
+            </footer>
         </div>
-    </body>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/theme.js') }}"></script>
+    @stack('scripts')
+</body>
 </html>
