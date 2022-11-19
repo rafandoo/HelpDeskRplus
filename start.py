@@ -25,14 +25,15 @@ def main(cmd, param):
     :param cmd: list of commands to run
     :param param: list of parameters passed to the script
     """
-    if param == ['-m']:
-        run('php artisan migrate')
-    if param == ['-s']:
-        run('php artisan db:seed')
-    if param == ['-ms']:
-        run('php artisan migrate:fresh --seed')
-    if param == ['-r']:
-        run('php artisan migrate:fresh')
+    for prm in param:
+        if prm == '-r':
+            run('php artisan migrate:fresh')
+        if prm == '-m':
+            run('php artisan migrate')
+        if prm == '-s':
+            run('php artisan db:seed')
+        if prm == '-ms':
+            run('php artisan migrate:fresh --seed')
     threads = []
     for c in cmd:
         t = threading.Thread(target=run, args=(c,))
