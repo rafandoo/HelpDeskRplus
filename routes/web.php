@@ -69,9 +69,4 @@ Route::middleware(['auth'])->group(function() {
     Route::get('city/{state}/state', [CityController::class, 'showState'])->name('city.showState');
 });
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 require __DIR__.'/auth.php';
