@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('number', 10)->nullable();
             $table->string('complement', 255)->nullable();
             $table->string('neighborhood', 255);
-            $table->string('zip_code', 8);
+            $table->string('zip_code', 9);
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities');
             $table->timestamps();
