@@ -54,3 +54,6 @@ tmp/
 
 # Ignore tmp files
 *.tmp
+
+# ignore image files
+public/image/*
