@@ -52,6 +52,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/{login}/login', [UserController::class, 'validateLogin'])->name('user.validateLogin');
     Route::get('user/{email}/email', [UserController::class, 'validateEmail'])->name('user.validateEmail');
     Route::get('user/{id}/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::patch('user/{id}/profile', [UserController::class, 'updateProfile'])->name('user.updateProfile');
+    Route::patch('user/{id}', [UserController::class, 'update'])->name('user.update');
+
     Route::resource('user', UserController::class);
 
     /* Creating a route for the ticket controller. */
