@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/{id}/active', [UserController::class, 'active'])->name('user.active');
     Route::get('user/{login}/login', [UserController::class, 'validateLogin'])->name('user.validateLogin');
     Route::get('user/{email}/email', [UserController::class, 'validateEmail'])->name('user.validateEmail');
+    Route::get('user/{id}/profile', [UserController::class, 'profile'])->name('user.profile');
     Route::resource('user', UserController::class);
 
     /* Creating a route for the ticket controller. */

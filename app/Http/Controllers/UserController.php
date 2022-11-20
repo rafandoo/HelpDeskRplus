@@ -46,7 +46,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
+        $request->validate([
+            'email' => 'required|email|unique:users,email',
+            'name' => 'required',
+            'last_name' => 'required',
+            'username' => 'required|unique:users,username',
+            'password' => 'required|min:8',
+            'confirm_password' => 'required|same:password',
+            'access_level' => 'required'
+        ]);
+
+        $user = new User();
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->last_name = $request->last_name;
+        $user->username = $request->username;
+        $user->password = bcrypt($request->password);
+        $user->access_level = $request->access_level;
+        $user->active = $request->active;
+        $user->save();
+
         return redirect()->route('user.index')->with('success', 'Usuário cadastrado com sucesso!');
     }
 
@@ -118,7 +137,27 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        $user->update($request->all());
+        $request->validate([
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'name' => 'required',
+            'last_name' => 'required',
+            'username' => 'required|unique:users,username,' . $user->id,
+            'access_level' => 'required'
+        ]);
+        if ($request->password) {
+            $request->validate([
+                'password' => 'required|min:8',
+                'confirm_password' => 'required|same:password'
+            ]);
+            $user->password = bcrypt($request->password);
+        }
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->last_name = $request->last_name;
+        $user->username = $request->username;
+        $user->access_level = $request->access_level;
+        $user->active = $request->active;
+        $user->save();
         return redirect()->route('user.index')->with('success', 'Usuário atualizado com sucesso!');
     }
 
@@ -151,5 +190,17 @@ class UserController extends Controller
         }
         $user->save();
         return redirect()->route('user.index')->with('success', 'Situação alterada com sucesso!');
+    }
+
+    /**
+     * Display the profile of the user.
+     * 
+     * @param  \App\Models\User  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile($id)
+    {
+        $user = User::findOrFail($id);
+        return view('user.profile', compact('user'));
     }
 }
