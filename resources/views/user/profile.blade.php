@@ -16,10 +16,18 @@
         <div class="col-lg-4">
             <div class="card mb-3">
                 <div class="card-body text-center shadow">
-                    <img class="rounded-circle mb-3 mt-4" width="160" height="160" src="{{ asset('assets/img/dogs/image3.jpeg') }}">
-                    <div class="mb-3">
-                        <button class="btn btn-primary btn-sm" type="button">Mudar foto</button>
-                    </div>
+                    @if ($user->picture)
+                        <img class="rounded-circle mb-3 mt-4" src="{{ asset('image/' . $user->picture) }}" width="160" height="160" style="object-fit: cover;">
+                    @else
+                        <img class="rounded-circle mb-3 mt-4" src="{{ asset('assets/img/avatars/avatar.jpeg') }}" width="160" height="160" style="object-fit: cover;">
+                    @endif
+                    <form action="{{ route('user.updateProfile', $user->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
+                        <input type="file" name="picture" id="picture" class="form-control-file" hidden>
+                        <label for="picture" class="btn btn-primary btn-sm" type="button">Escolher foto</label>
+                        <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -31,9 +39,9 @@
                             <p class="text-primary m-0 fw-bold">Dados do perfil</p>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="{{ route('user.update', $user->id) }}">
+                            <form method="post" action="{{ route('user.updateProfile', $user->id) }}">
                                 @csrf
-                                @method('PUT')
+                                @method('PATCH')
                                 <div class="row">
                                     <div class="col">
                                         <input type="hidden" id="id" name="id" value="{{ $user->id }}">
@@ -48,7 +56,7 @@
                                     <div class="col">
                                         <div class="mb-3">
                                             <label class="form-label" for="email"><strong>E-mail</strong></label>
-                                            <input class="form-control" type="email" id="email" placeholder="user@example.com" name="email" required= value="{{ $user->email }}" onchange="validateEmail(this)">
+                                            <input class="form-control" type="email" id="email" placeholder="user@example.com" name="email" required value="{{ $user->email }}" onchange="validateEmail(this)">
                                         </div>
                                     </div>
                                 </div>

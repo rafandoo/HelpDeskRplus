@@ -16,10 +16,18 @@
         <div class="col-lg-4">
             <div class="card mb-3">
                 <div class="card-body text-center shadow">
-                    <img class="rounded-circle mb-3 mt-4" width="160" height="160" src="{{ asset('assets/img/dogs/image3.jpeg') }}">
-                    <div class="mb-3">
-                        <button class="btn btn-primary btn-sm" type="button">Mudar foto</button>
-                    </div>
+                    @if ($user->picture)
+                        <img class="rounded-circle mb-3 mt-4" src="{{ asset('image/' . $user->picture) }}" width="160" height="160" style="object-fit: cover;">
+                    @else
+                        <img class="rounded-circle mb-3 mt-4" src="{{ asset('assets/img/avatars/avatar.jpeg') }}" width="160" height="160" style="object-fit: cover;">
+                    @endif
+                    <form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
+                        <input type="file" name="picture" id="picture" class="form-control-file" hidden>
+                        <label for="picture" class="btn btn-primary btn-sm" type="button">Escolher foto</label>
+                        <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -33,7 +41,7 @@
                         <div class="card-body">
                             <form method="post" action="{{ route('user.update', $user->id) }}">
                                 @csrf
-                                @method('PUT')
+                                @method('PATCH')
                                 @include('user.form', ['user' => $user])
                             </form>
                         </div>
