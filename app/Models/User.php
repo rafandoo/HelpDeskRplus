@@ -97,4 +97,9 @@ class User extends Authenticatable
             ->using('App\Models\Team')
             ->withPivot('administrator');
     }
+
+    public function toDos()
+    {
+        return $this->hasMany(ToDo::class);
+    }
 }
