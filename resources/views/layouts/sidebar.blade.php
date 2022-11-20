@@ -47,7 +47,14 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item"><a class="nav-link" href="logout.php"><i class="fas fa-arrow-circle-left"></i><span>&nbsp;Sair</span></a></li>
+            <li class="nav-item">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <a class="nav-link" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+                        <i class="fas fa-arrow-circle-left"></i><span>&nbsp;Sair</span>
+                    </a>
+                </form>
+            </li>
         </ul>
         <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
     </div>
