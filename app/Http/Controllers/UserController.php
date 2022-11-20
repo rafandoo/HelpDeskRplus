@@ -53,7 +53,7 @@ class UserController extends Controller
             'username' => 'required|unique:users,username',
             'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
-            'access_level' => 'required'
+            'access_level' => 'required',
         ]);
 
         $user = new User();
@@ -137,13 +137,24 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
+
+        if ($request->picture) {
+            $request->validate([
+                'picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            ]);
+            $pictureName = time() . '.' . $request->picture->extension();
+            $request->picture->move(public_path('image'), $pictureName);
+            $user->picture = $pictureName;
+            $user->save();
+        }
+
         $request->validate([
             'email' => 'required|email|unique:users,email,' . $user->id,
             'name' => 'required',
             'last_name' => 'required',
             'username' => 'required|unique:users,username,' . $user->id,
-            'access_level' => 'required'
         ]);
+
         if ($request->password) {
             $request->validate([
                 'password' => 'required|min:8',
@@ -155,8 +166,10 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->last_name = $request->last_name;
         $user->username = $request->username;
+
         $user->access_level = $request->access_level;
         $user->active = $request->active;
+    
         $user->save();
         return redirect()->route('user.index')->with('success', 'Usuário atualizado com sucesso!');
     }
@@ -202,5 +215,49 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         return view('user.profile', compact('user'));
+    }
+
+    /**
+     * Update the profile of the user.
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateProfile(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        if ($request->picture) {
+            $request->validate([
+                'picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            ]);
+            $pictureName = time() . '.' . $request->picture->extension();
+            $request->picture->move(public_path('image'), $pictureName);
+            $user->picture = $pictureName;
+            $user->save();
+        }
+
+        $request->validate([
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'name' => 'required',
+            'last_name' => 'required',
+            'username' => 'required|unique:users,username,' . $user->id,
+        ]);
+
+        if ($request->password) {
+            $request->validate([
+                'password' => 'required|min:8',
+                'confirm_password' => 'required|same:password'
+            ]);
+            $user->password = bcrypt($request->password);
+        }
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->last_name = $request->last_name;
+        $user->username = $request->username;
+
+        $user->save();
+        return redirect()->route('user.profile', $user->id)->with('success', 'Perfil atualizado com sucesso!');
     }
 }
