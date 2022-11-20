@@ -91,10 +91,62 @@
                                 <div class="col d-xxl-flex align-items-xxl-center">
                                     <h5 class="text-dark fw-bold m-0">Lista de Tarefas</h5>
                                 </div>
-                                <div class="col text-end d-xxl-flex justify-content-xxl-end align-items-xxl-center"><a class="btn btn-info btn-sm btn-circle ms-1" role="button"><i class="fas fa-plus text-white"></i></a></div>
+                                <div class="col text-end d-xxl-flex justify-content-xxl-end align-items-xxl-center">
+                                    <button class="btn btn-info btn-sm btn-circle ms-1" type="button" data-bs-target="#modal-1" data-bs-toggle="modal"><i class="fas fa-plus text-white"></i></button>
+                                </div>
+                                <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Adicionar tarefa</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('todo.store') }} " method="POST">
+                                                    @csrf
+                                                    @method('POST')
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="usuario"><strong>Título</strong></label>
+                                                            <div class="input-group">
+                                                                <input class="form-control" type="text" id="title" name="title" required minlength="3">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer"><button class="btn btn-primary" type="button">Salvar</button></div>
+                                                </form>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <ul class="list-group list-group-flush">
+                        <ul class="list-group list-group-flush" id="todo">
+                            @php $todos = \App\Models\Todo::where('user_id', Auth::user()->id)->get(); @endphp
+                            @foreach ($todos as $todo)
+                                <li class="list-group-item">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col col-auto">
+                                            <button class="btn btn-outline-success btn-sm btn-circle ms-1" type="button">
+                                                <i class="fas fa-check"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col me-2">
+                                            <h6 class="mb-0"><strong>{{ $todo->title }}</strong></h6>
+                                            <span class="text-xs">{{ $todo->created_at->format('d/m/Y') }}</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <form action="{{ route('todo.destroy', $todo->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-outline-danger btn-sm btn-circle ms-1" type="submit" id="delete_todo">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
                             <li class="list-group-item">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col col-auto"><button class="btn btn-outline-success btn-sm btn-circle ms-1" type="button"><i class="fas fa-check"></i></button></div>
@@ -129,3 +181,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('assets/js/todo.js') }}"></script>
+@endpush

@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('to_dos', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->time('time');
             $table->date('date');
             $table->boolean('completed')->default(false);
             $table->foreignId('user_id')->constrained('users');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ToDo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ToDoController extends Controller
 {
@@ -18,16 +19,6 @@ class ToDoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -35,41 +26,12 @@ class ToDoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ToDo  $toDo
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ToDo $toDo)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ToDo  $toDo
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ToDo $toDo)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ToDo  $toDo
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ToDo $toDo)
-    {
-        //
+        $ToDo = new ToDo();
+        $ToDo->title = $request->title;
+        $ToDo->completed = false;
+        $ToDo->user_id = Auth::user()->id;
+        $ToDo->save();
+        return redirect()->route('home');
     }
 
     /**
@@ -78,8 +40,9 @@ class ToDoController extends Controller
      * @param  \App\Models\ToDo  $toDo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ToDo $toDo)
+    public function destroy($id)
     {
-        //
+        ToDo::find($id)->delete();
+        return redirect()->route('home');
     }
 }

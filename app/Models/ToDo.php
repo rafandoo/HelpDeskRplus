@@ -11,8 +11,6 @@ class ToDo extends Model
 
     protected $fillable = [
         'title',
-        'time',
-        'date',
         'completed',
         'user_id',
     ];

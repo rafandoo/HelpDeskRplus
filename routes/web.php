@@ -10,6 +10,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\OccurrencesController;
 use App\Http\Controllers\ServiceOrderController;
+use App\Http\Controllers\ToDoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +39,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('sector/team/{sector_id}/{user_id}', [SectorController::class, 'deleteTeam'])->name('sector.team.delete');
     Route::patch('sector/team/{sector_id}/{user_id}', [SectorController::class, 'updateTeam'])->name('sector.team.update');
     Route::resource('sector', SectorController::class, ['except' => ['show', 'destroy']]);
-
-
 
     /* Creating a route for the client controller. */
     Route::get('client/{id}/active', [ClientController::class, 'active'])->name('client.active');
@@ -72,8 +71,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('serviceOrder/store', [ServiceOrderController::class, 'store'])->name('serviceOrder.store');
     Route::put('serviceOrder/update/{id}', [ServiceOrderController::class, 'update'])->name('serviceOrder.update');
 
+    /* A route to the city controller. */
     Route::get('city/{state}/state', [CityController::class, 'showState'])->name('city.showState');
     Route::get('city/{id}', [CityController::class, 'show'])->name('city.show');
+
+    /* Creating a route for the ToDoController. */
+    Route::resource('todo', ToDoController::class, ['except' => ['create', 'edit', 'update', 'show']]);
 });
 
 require __DIR__.'/auth.php';
