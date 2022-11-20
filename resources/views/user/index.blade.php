@@ -64,7 +64,7 @@
                             <tr class="align-middle">
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name . ' ' . $user->last_name }}</td>
-                                <td>{{ $user->login }}</td>
+                                <td>{{ $user->username }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ App\Models\AccessLevel::find($user->access_level)->name }}</td>
                                 <td>{{ $user->active == 1 ? 'Ativo' : 'Inativo' }}</td>
