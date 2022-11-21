@@ -15,15 +15,15 @@ class TeamFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition()
-    {
+    {   
         $user = \App\Models\User::inRandomOrder()->first();
         $sector = \App\Models\Sector::inRandomOrder()->first();
         return [
             'user_id' => $user->id,
             'sector_id' => $sector->id,
-            'admin' => $this->faker->boolean,   
-            'created_at' => $this->faker->dateTime,
-            'updated_at' => $this->faker->dateTime
+            'admin' => $this->faker->boolean,
+            'created_at' => fake()->dateTime(),
+            'updated_at' => fake()->dateTime()
         ];
     }
 }

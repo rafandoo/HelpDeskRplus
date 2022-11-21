@@ -34,10 +34,11 @@ class DatabaseSeeder extends Seeder
         //     ClientSeeder::class,
         //     // AddressSeeder::class,
         //     UserSeeder::class,
-        //     TeamSeeder::class,
         //     TicketSeeder::class,
         //     OccurrenceSeeder::class,
         //     ServiceOrderSeeder::class,
+        //     AdmUserTableSeeder::class,
+        //     TeamSeeder::class,
         // ]);
 
         $this->command->info('All tables seeded!');

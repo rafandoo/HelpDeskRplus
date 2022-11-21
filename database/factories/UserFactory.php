@@ -22,7 +22,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'last_name' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
-            'login' => fake()->unique()->userName(),
+            'username' => fake()->unique()->userName(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'access_level' => $access_level->id,

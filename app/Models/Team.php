@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class Team extends Pivot
 {
     protected $table = 'teams';
+    
+    use HasFactory;
 
     /* A security feature that prevents mass assignment. */
     protected $fillable = [
