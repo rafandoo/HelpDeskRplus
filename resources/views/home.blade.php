@@ -112,10 +112,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="modal-footer"><button class="btn btn-primary" type="button">Salvar</button></div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-primary" type="submit">Salvar</button>
+                                                    </div>
                                                 </form>
                                             </div>
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -127,13 +128,18 @@
                                 <li class="list-group-item">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col col-auto">
-                                            <button class="btn btn-outline-success btn-sm btn-circle ms-1" type="button">
+                                            <button class="btn btn-outline-success btn-sm btn-circle ms-1" type="button" id="btnDone" value="{{ $todo->id }}">
                                                 <i class="fas fa-check"></i>
                                             </button>
                                         </div>
                                         <div class="col me-2">
-                                            <h6 class="mb-0"><strong>{{ $todo->title }}</strong></h6>
-                                            <span class="text-xs">{{ $todo->created_at->format('d/m/Y') }}</span>
+                                            @if ($todo->completed == 1)
+                                                <h6 class="mb-0" id="todo_title_{{ $todo->id }}"><del>{{ $todo->title }}</del></h6>
+                                                <span class="text-xs" id="todo_data_{{ $todo->id }}"><del>{{ $todo->created_at->format('d/m/Y') }}</del></span>
+                                            @else
+                                                <h6 class="mb-0" id="todo_title_{{ $todo->id }}"><strong>{{ $todo->title }}</strong></h6>
+                                                <span class="text-xs" id="todo_data_{{ $todo->id }}">{{ $todo->created_at->format('d/m/Y') }}</span>
+                                            @endif
                                         </div>
                                         <div class="col-auto">
                                             <form action="{{ route('todo.destroy', $todo->id) }}" method="POST">
@@ -147,33 +153,6 @@
                                     </div>
                                 </li>
                             @endforeach
-                            <li class="list-group-item">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col col-auto"><button class="btn btn-outline-success btn-sm btn-circle ms-1" type="button"><i class="fas fa-check"></i></button></div>
-                                    <div class="col me-2">
-                                        <h6 class="mb-0"><strong>Lunch meeting</strong></h6><span class="text-xs">10:30 AM</span>
-                                    </div>
-                                    <div class="col-auto"><button class="btn btn-outline-danger btn-sm btn-circle ms-1" type="button"><i class="far fa-trash-alt"></i></button></div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col col-auto"><button class="btn btn-outline-success btn-sm btn-circle ms-1" type="button"><i class="fas fa-check"></i></button></div>
-                                    <div class="col me-2">
-                                        <h6 class="mb-0"><strong>Lunch meeting</strong></h6><span class="text-xs">10:30 AM</span>
-                                    </div>
-                                    <div class="col-auto"><button class="btn btn-outline-danger btn-sm btn-circle ms-1" type="button"><i class="far fa-trash-alt"></i></button></div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col col-auto"><button class="btn btn-outline-success btn-sm btn-circle ms-1" type="button"><i class="fas fa-check"></i></button></div>
-                                    <div class="col me-2">
-                                        <h6 class="mb-0"><strong>Lunch meeting</strong></h6><span class="text-xs">10:30 AM</span>
-                                    </div>
-                                    <div class="col-auto"><button class="btn btn-outline-danger btn-sm btn-circle ms-1" type="button"><i class="far fa-trash-alt"></i></button></div>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                 </div>

@@ -45,4 +45,23 @@ class ToDoController extends Controller
         ToDo::find($id)->delete();
         return redirect()->route('home');
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\ToDo  $toDo
+     * @return \Illuminate\Http\Response
+     */
+    public function done($id)
+    {
+        $ToDo = ToDo::find($id);
+        if ($ToDo->completed) {
+            $ToDo->completed = false;
+        } else {
+            $ToDo->completed = true;
+        }
+        $ToDo->save();
+        return redirect()->route('home');
+    }
 }

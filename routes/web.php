@@ -77,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
 
     /* Creating a route for the ToDoController. */
     Route::resource('todo', ToDoController::class, ['except' => ['create', 'edit', 'update', 'show']]);
+    Route::patch('todo/{id}/done', [ToDoController::class, 'done'])->name('todo.done');
 });
 
 require __DIR__.'/auth.php';
