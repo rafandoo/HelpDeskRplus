@@ -5,7 +5,7 @@ $('#searchButton').click(function() {
     let filter = document.getElementById('filter').value;
     let search = document.getElementById('search').value;
     if (search.length === 0) search = 'all';
-    let url = "/client/" + filter + "/" + search;
+    let url = "/client/" + filter + "/" + search + "/search";
     $.get(url, function (data) {
         $("#clients").empty();
         $.each(data, function (i, client) {

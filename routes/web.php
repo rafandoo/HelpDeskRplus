@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     /* Creating a route for the client controller. */
     Route::get('client/{id}/active', [ClientController::class, 'active'])->name('client.active');
     Route::get('client/{cpf_cnpj}/cpf-cnpj', [ClientController::class, 'validateCpfCnpj'])->name('client.validateCpfCnpj');
-    Route::get('client/{filter}/{search}', [ClientController::class, 'search'])->name('client.search');
+    Route::get('client/{filter}/{search}/search', [ClientController::class, 'search'])->name('client.search');
     Route::resource('client', ClientController::class);
 
     /* Creating a route for the user controller. */
