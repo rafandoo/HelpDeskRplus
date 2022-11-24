@@ -91,9 +91,9 @@
 <hr>
 <div class="row">
     <div class="col">
-        <div class="mb-3"><label class="form-label" for="login"><strong>Usuário</strong></label>
+        <div class="mb-3"><label class="form-label" for="username"><strong>Usuário</strong></label>
             <div class="input-group"><span class="input-group-text">@</span>
-                <input class="form-control" type="text" id="login" name="login" placeholder="user.name" required minlength="2" value="{{ isset($user) ? $user->login : '' }}" onchange="validateLogin(this)">
+                <input class="form-control" type="text" id="username" name="username" placeholder="user.name" required minlength="2" value="{{ isset($user) ? $user->username : '' }}" onchange="validateLogin(this)">
             </div>
         </div>
     </div>

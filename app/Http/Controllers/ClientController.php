@@ -48,7 +48,7 @@ class ClientController extends Controller
         $u = new User();
         $u->name = $request->name;
         $u->email = $request->email;
-        $u->login = $request->login;
+        $u->username = $request->username;
         $u->password = bcrypt($request->password);
         $u->access_level = 1;
         $u->save();
