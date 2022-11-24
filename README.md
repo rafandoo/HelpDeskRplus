@@ -65,7 +65,7 @@ It's necessary to create a database with the default configuration in advance, t
 Execute the command below to run the project in your shell.
 
 ```shell
-   python start.py
+   python start.py -run
 ```
 
 ## Documents 📄

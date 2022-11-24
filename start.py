@@ -2,8 +2,6 @@ import threading
 from os import system
 import sys
 
-cmd = ['php artisan serve', 'python util\src\main.py']
-
 def params():
     """
     It gets the parameters passed to the script
@@ -18,7 +16,7 @@ def run(cmd):
     """
     system(cmd)
 
-def main(cmd, param):
+def main(param):
     """
     It takes two parameters, cmd and param.
     
@@ -34,11 +32,13 @@ def main(cmd, param):
             run('php artisan db:seed')
         if prm == '-ms':
             run('php artisan migrate:fresh --seed')
-    threads = []
-    for c in cmd:
-        t = threading.Thread(target=run, args=(c,))
-        threads.append(t)
-        t.start()
+        if prm == '-run':
+            cmd = ['php artisan serve', 'python util\src\main.py']
+            threads = []
+            for c in cmd:
+                t = threading.Thread(target=run, args=(c,))
+                threads.append(t)
+                t.start()
 
 if __name__ == '__main__':
     param = params()
@@ -52,6 +52,7 @@ if __name__ == '__main__':
         -s: Runs the seed command
         -ms: Runs the migration and seed commands
         -r: Resets the database
+        -run: Runs the server and the python script
         ''')
         exit()
-    main(cmd, param)
+    main(param)
