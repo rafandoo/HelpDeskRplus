@@ -51,6 +51,7 @@
 @push('scripts')
     <script src="{{ asset('assets/js/summernote-bs5.min.js') }}"></script>
     <script src="{{ asset('assets/js/summernote.js') }}"></script>
+    <script src="{{ asset('assets/js/format.js') }}"></script>
     <script src="{{ asset('assets/js/searchClients.js') }}"></script>
     <script src="{{ asset('assets/js/searchUsers.js') }}"></script>
 @endpush

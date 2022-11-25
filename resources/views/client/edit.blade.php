@@ -38,4 +38,5 @@
     <script src="{{ asset('assets/js/searchCities.js') }}"></script>
     <script src="{{ asset('assets/js/validation.js') }}"></script>
     <script src="{{ asset('assets/js/searchZipCode.js') }}"></script>
+    <script src="{{ asset('assets/js/format.js') }}"></script>
 @endpush

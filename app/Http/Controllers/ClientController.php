@@ -124,7 +124,13 @@ class ClientController extends Controller
         $user = User::findOrFail($client->user_id);
         $address = Address::where('client_id', $client->id)->first();
 
-        $user->update($request->all());
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->username = $request->username;
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+        }
+        $user->save();
         $address->update($request->all());
         $client->update($request->all());
         return redirect()->route('client.index')->with('success', 'Cliente atualizado com sucesso!');
