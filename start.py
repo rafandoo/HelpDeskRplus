@@ -55,4 +55,9 @@ if __name__ == '__main__':
         -run: Runs the server and the python script
         ''')
         exit()
+    if param == []:
+        print('''
+        No parameter passed. Use -help to see the list of parameters.
+        ''')
+        exit()
     main(param)
