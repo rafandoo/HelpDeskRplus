@@ -82,11 +82,7 @@ class SectorController extends Controller
     public function active($id)
     {
         $sector = Sector::findOrFail($id);
-        if ($sector->active == 1) {
-            $sector->active = 0;
-        } else {
-            $sector->active = 1;
-        }
+        $sector->active = !$sector->active;
         $sector->save();
         return redirect()->route('sector.index')->with('success', 'Situação alterado com sucesso!');
     }

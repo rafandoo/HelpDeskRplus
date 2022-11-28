@@ -18,11 +18,10 @@ class ClientController extends Controller
     {
         $search = request('search');
         $filter = request('filter');
+        $clients = Client::paginate(5);
 
         if ($search) {
-            $clients = Client::where($filter, 'like', '%' . $search . '%')->paginate(10);
-        } else {
-            $clients = Client::paginate(10);
+            $clients = Client::where($filter, 'like', '%' . $search . '%')->paginate(5);
         }
         return view('client.index', compact('clients'));
     }
@@ -94,9 +93,8 @@ class ClientController extends Controller
         $client = Client::where('cpf_cnpj', $cpf_cnpj)->first();
         if ($client) {
             return response('True', 200);
-        } else {
-            return response('False', 200);
         }
+        return response('False', 200);
     }
 
     /**
@@ -145,11 +143,7 @@ class ClientController extends Controller
     public function active($id)
     {
         $client = Client::findOrFail($id);
-        if ($client->active == 1) {
-            $client->active = 0;
-        } else {
-            $client->active = 1;
-        }
+        $client->active = !$client->active;
         $client->save();
         return redirect()->route('client.index')->with('success', 'Situação atualizado com sucesso!');
     }

@@ -81,11 +81,7 @@ class CategoryController extends Controller
     public function active($id)
     {
         $category = Category::findOrFail($id);
-        if ($category->active == 1) {
-            $category->active = 0;
-        } else {
-            $category->active = 1;
-        }
+        $category->active = !$category->active;
         $category->save();
         return redirect()->route('category.index')->with('success', 'Situação alterada com sucesso!');
     }

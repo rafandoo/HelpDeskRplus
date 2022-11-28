@@ -196,11 +196,7 @@ class UserController extends Controller
     public function active($id)
     {
         $user = User::findOrFail($id);
-        if ($user->active == 1) {
-            $user->active = 0;
-        } else {
-            $user->active = 1;
-        }
+        $user->active = !$user->active;
         $user->save();
         return redirect()->route('user.index')->with('success', 'Situação alterada com sucesso!');
     }
