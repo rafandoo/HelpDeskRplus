@@ -59,6 +59,8 @@ Route::middleware(['auth'])->group(function () {
 
     /* Creating a route for the ticket controller. */
     Route::get('ticket/outstanding', [TicketController::class, 'outstanding'])->name('ticket.outstanding');
+    Route::get('ticket/pending', [TicketController::class, 'pending'])->name('ticket.pending');
+    Route::get('ticket/inProgress', [TicketController::class, 'inProgress'])->name('ticket.inProgress');
     Route::get('ticket/{id}/occurrences', [TicketController::class, 'occurrences'])->name('ticket.occurrences');
     Route::resource('ticket', TicketController::class, ['except' => ['show']]);
 

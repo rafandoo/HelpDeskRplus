@@ -18,7 +18,7 @@ class ClientController extends Controller
     {
         $search = request('search');
         $filter = request('filter');
-        $clients = Client::paginate(5);
+        $clients = Client::paginate(10);
 
         if ($search) {
             $clients = Client::where($filter, 'like', '%' . $search . '%')->paginate(5);

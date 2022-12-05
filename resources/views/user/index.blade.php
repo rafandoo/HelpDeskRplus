@@ -87,52 +87,7 @@
                 </table>
             </div>
             <div class="row">
-                <div class="col-md-6 align-self-center">
-                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando de 1 a {{ $users->count() }} de {{ $users->total() }} registros</p>
-                </div>
-                <div class="col-md-6">
-                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                        <ul class="pagination">
-                            @if ($users->currentPage() == 1)
-                                <li class="page-item disabled">
-                                    <a class="page-link" aria-label="Previous" href="#">
-                                        <span aria-hidden="true">«</span>
-                                    </a>
-                                </li>
-                            @else
-                                <li class="page-item">
-                                    <a class="page-link" aria-label="Previous" href="{{ $users->previousPageUrl() }}">
-                                        <span aria-hidden="true">«</span>
-                                    </a>
-                                </li>
-                            @endif
-                            @for ($i = 1; $i <= $users->lastPage(); $i++)
-                                @if ($users->currentPage() == $i)
-                                    <li class="page-item active">
-                                        <a class="page-link" href="#">{{ $i }}</a>
-                                    </li>
-                                @else
-                                    <li class="page-item">
-                                        <a class="page-link" href="{{ $users->url($i) }}">{{ $i }}</a>
-                                    </li>
-                                @endif
-                            @endfor
-                            @if ($users->currentPage() == $users->lastPage())
-                                <li class="page-item disabled">
-                                    <a class="page-link" aria-label="Next" href="#">
-                                        <span aria-hidden="true">»</span>
-                                    </a>
-                                </li>
-                            @else
-                                <li class="page-item">
-                                    <a class="page-link" aria-label="Next" href="{{ $users->nextPageUrl() }}">
-                                        <span aria-hidden="true">»</span>
-                                    </a>
-                                </li>
-                            @endif
-                        </ul>
-                    </nav>
-                </div>
+                {{ $users->appends(array('filter' => $_GET['filter'] ?? '', 'search' => $_GET['search'] ?? ''))->links() }}
             </div>
         </div>
     </div>

@@ -28,7 +28,8 @@
                     </div>
                 </div>
             </a></div>
-        <div class="col-md-6 col-xl-3 mb-4"><a href="filaAtendimentos.php?filtroPrioridade=0&filtroStatus=3&filtroCategoria=0&filtroUsuario=0&cliente=&filtroCliente=0&filtro=nome&procurar=&filtroSetor=0" style="text-decoration: none;">
+        <div class="col-md-6 col-xl-3 mb-4">
+            <a href="{{ route('ticket.inProgress') }}" style="text-decoration: none;">
                 <div class="card shadow border-start-primary py-2">
                     <div class="card-body">
                         <div class="row align-items-center no-gutters">
@@ -40,8 +41,10 @@
                         </div>
                     </div>
                 </div>
-            </a></div>
-        <div class="col-md-6 col-xl-3 mb-4"><a href="filaAtendimentos.php?filtroPrioridade=0&filtroStatus=2&filtroCategoria=0&filtroUsuario=0&cliente=&filtroCliente=0&filtro=nome&procurar=&filtroSetor=0" style="text-decoration: none;">
+            </a>
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4">
+            <a href="{{ route('ticket.pending') }}" style="text-decoration: none;">
                 <div class="card shadow border-start-primary py-2">
                     <div class="card-body">
                         <div class="row align-items-center no-gutters">
@@ -57,7 +60,8 @@
                         </div>
                     </div>
                 </div>
-            </a></div>
+            </a>
+        </div>
         <div class="col-md-6 col-xl-3 mb-4">
             <a href="#" style="text-decoration: none;">
                 <div class="card shadow border-start-primary py-2" style="text-decoration: none;">

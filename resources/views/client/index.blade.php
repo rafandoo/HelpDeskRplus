@@ -82,32 +82,7 @@
                 </table>
             </div>
             <div class="row">
-                <div class="col-md-6 align-self-center">
-                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando de 1 a {{ $clients->count() }} de {{ $clients->total() }} registros</p>
-                </div>
-                <div class="col-md-6">
-                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                        <ul class="pagination">
-                            @if($clients->currentPage() == 1)
-                                <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                            @else
-                                <li class="page-item"><a class="page-link" href="{{ $clients->previousPageUrl() }}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                            @endif
-                            @for ($i = 1; $i <= $clients->lastPage(); $i++)
-                                @if($clients->currentPage() == $i)
-                                    <li class="page-item active"><a class="page-link" href="#">{{ $i }}</a></li>
-                                @else
-                                    <li class="page-item"><a class="page-link" href="{{ $clients->url($i) }}">{{ $i }}</a></li>
-                                @endif
-                            @endfor
-                            @if($clients->currentPage() == $clients->lastPage())
-                                <li class="page-item disabled"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                            @else
-                                <li class="page-item"><a class="page-link" href="{{ $clients->nextPageUrl() }}" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                            @endif
-                        </ul>
-                    </nav>
-                </div>
+                {{ $clients->appends(array('filter' => $_GET['filter'] ?? '', 'search' => $_GET['search'] ?? ''))->links() }}
             </div>
         </div>
     </div>

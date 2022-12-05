@@ -69,32 +69,7 @@
                 </table>
             </div>
             <div class="row">
-                <div class="col-md-6 align-self-center">
-                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando de 1 a {{ $sectors->count() }} de {{ $sectors->total() }} registros</p>
-                </div>
-                <div class="col-md-6">
-                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                        <ul class="pagination">
-                            @if($sectors->currentPage() == 1)
-                                <li class="page-item disabled"><a class="page-link" aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
-                            @else
-                                <li class="page-item"><a class="page-link" aria-label="Previous" href="{{ $sectors->previousPageUrl() }}"><span aria-hidden="true">«</span></a></li>
-                            @endif
-                            @for($i = 1; $i <= $sectors->lastPage(); $i++)
-                                @if($sectors->currentPage() == $i)
-                                    <li class="page-item active"><a class="page-link" href="{{ $sectors->url($i) }}">{{ $i }}</a></li>
-                                @else
-                                    <li class="page-item"><a class="page-link" href="{{ $sectors->url($i) }}">{{ $i }}</a></li>
-                                @endif
-                            @endfor
-                            @if($sectors->currentPage() == $sectors->lastPage())
-                                <li class="page-item disabled"><a class="page-link" aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
-                            @else
-                                <li class="page-item"><a class="page-link" aria-label="Next" href="{{ $sectors->nextPageUrl() }}"><span aria-hidden="true">»</span></a></li>
-                            @endif
-                        </ul>
-                    </nav>
-                </div>
+                {{ $sectors->appends('search', $_GET['search'] ?? '')->links() }}
             </div>
         </div>
     </div>

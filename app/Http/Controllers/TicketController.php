@@ -104,6 +104,23 @@ class TicketController extends Controller
     }
 
     /**
+     * It returns a view of the index page with the tickets that have a status_id of 2.
+     * 
+     * @return A collection of tickets with a status_id of 2.
+     */
+    public function pending()
+    {
+        $tickets = Ticket::where('status_id', 2)->paginate(10);
+        return view('ticket.index', compact('tickets'));
+    }
+
+    public function inProgress()
+    {
+        $tickets = Ticket::where('status_id', 3)->paginate(10);
+        return view('ticket.index', compact('tickets'));
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Ticket  $ticket
