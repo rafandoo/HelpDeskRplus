@@ -104,9 +104,9 @@ class TicketController extends Controller
     }
 
     /**
-     * It returns a view of the index page with the tickets that have a status_id of 2.
+     * It returns a view of all tickets with a status of 2
      * 
-     * @return A collection of tickets with a status_id of 2.
+     * @return A collection of tickets that have a status_id of 2.
      */
     public function pending()
     {
@@ -114,6 +114,11 @@ class TicketController extends Controller
         return view('ticket.index', compact('tickets'));
     }
 
+/**
+ * It returns a view of all tickets with a status of 3.
+ * 
+ * @return A collection of tickets that have a status_id of 3.
+ */
     public function inProgress()
     {
         $tickets = Ticket::where('status_id', 3)->paginate(10);
