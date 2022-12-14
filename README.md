@@ -70,11 +70,7 @@ Execute the command below to run the project in your shell.
 
 ## Documents 📄
 
-[Scope Project (PT-BR)]()
-
-[Software Requirements (PT-BR)]()
-
-[Diagram Model Entity Relationship]()
+[Diagram Model Entity Relationship](https://github.com/rafandoo/HelpDeskRplus/blob/a24ccc8894b20fb9cb3fcbce2f6923ad1f36650b/docs/DIAGRAMA%20MODELO%20ENTIDADE%20RELACIONAMENTO.png)
 
 ## Libraries and frameworks 📚
 
