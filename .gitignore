@@ -57,3 +57,7 @@ tmp/
 
 # ignore image files
 public/image/*
+
+# ignore docs
+docs/*.pdf
+*.pdf
