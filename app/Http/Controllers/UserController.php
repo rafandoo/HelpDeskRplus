@@ -88,9 +88,9 @@ class UserController extends Controller
      * 
      * @return True or False
      */
-    public function validateLogin($login)
+    public function validateLogin($username)
     {
-        $user = User::where('login', $login)->first();
+        $user = User::where('username', $username)->first();
         if ($user) {
             return response('True', 200);
         } else {

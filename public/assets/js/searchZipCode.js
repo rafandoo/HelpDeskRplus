@@ -2,7 +2,7 @@
 $("#zip_code").change(function() {
     let zip_code = $(this).val();
     zip_code = zip_code.replace(/[^0-9]/, '');
-    let url = "http://localhost:8080/zipcode/" + zip_code;
+    let url = "http://localhost:8060/zipcode/" + zip_code;
 
     if (zip_code.length !== 8) {
         return;

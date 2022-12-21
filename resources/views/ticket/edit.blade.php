@@ -54,4 +54,4 @@
     <script src="{{ asset('assets/js/format.js') }}"></script>
     <script src="{{ asset('assets/js/searchClients.js') }}"></script>
     <script src="{{ asset('assets/js/searchUsers.js') }}"></script>
-@endsection
+@endpush

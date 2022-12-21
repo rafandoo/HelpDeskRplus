@@ -35,4 +35,4 @@ async def zip_code(zip: str):
     return resultJson
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=8080)
+    uvicorn.run(app, host="localhost", port=8060)
